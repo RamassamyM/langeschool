@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031131559) do
+ActiveRecord::Schema.define(version: 20171031142606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assets", force: :cascade do |t|
+    t.string "url"
+    t.string "asset_type"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_assets_on_post_id"
+  end
 
   create_table "children", force: :cascade do |t|
     t.string "first_name"
@@ -33,6 +42,13 @@ ActiveRecord::Schema.define(version: 20171031131559) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contents", force: :cascade do |t|
+    t.text "text"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "familylinks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "child_id"
@@ -41,15 +57,6 @@ ActiveRecord::Schema.define(version: 20171031131559) do
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_familylinks_on_child_id"
     t.index ["user_id"], name: "index_familylinks_on_user_id"
-  end
-
-  create_table "media", force: :cascade do |t|
-    t.string "url"
-    t.string "type"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_media_on_post_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -65,7 +72,7 @@ ActiveRecord::Schema.define(version: 20171031131559) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.string "type"
+    t.string "post_type"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,17 +103,17 @@ ActiveRecord::Schema.define(version: 20171031131559) do
     t.string "last_name"
     t.text "description"
     t.string "photo_url"
-    t.boolean "in_directory", default: true
-    t.boolean "admin"
+    t.boolean "in_directory", default: true, null: false
+    t.boolean "admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "assets", "posts"
   add_foreign_key "children", "classrooms"
   add_foreign_key "familylinks", "children"
   add_foreign_key "familylinks", "users"
-  add_foreign_key "media", "posts"
   add_foreign_key "posts", "users"
 end
