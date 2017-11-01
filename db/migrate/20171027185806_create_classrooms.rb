@@ -3,6 +3,7 @@ class CreateClassrooms < ActiveRecord::Migration[5.1]
     create_table :classrooms do |t|
       t.string :name
       t.string :teacher
+      t.string :teacher_gender
       t.string :signin_code
       t.boolean :opened, default: true, null: false
 

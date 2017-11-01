@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'faker', :git => 'git://github.com/stympy/faker.git'
 
 group :development, :test do
   gem 'pry-byebug'

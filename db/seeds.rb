@@ -5,3 +5,118 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+print 'Destroying familylinks...'
+Familylink.destroy_all
+puts 'done'
+print 'Destroying children...'
+Child.destroy_all
+puts 'done'
+print 'Destroying classrooms...'
+Classroom.destroy_all
+puts 'done'
+print "Destroying assets..."
+Asset.destroy_all
+puts 'done'
+print 'Destroying posts...'
+Post.destroy_all
+puts 'done'
+print 'Destroying messages...'
+Message.destroy_all
+puts 'done'
+print 'Destroying users...'
+User.destroy_all
+puts 'done'
+
+classes = [
+          { name: "CPa", teacher: "Talbi", teacher_gender: "female" },
+          { name: "CPb", teacher: "Couriau", teacher_gender: "female" },
+          { name: "CE1", teacher: "Gonçalves", teacher_gender: "female" },
+          { name: "CE1-CE2", teacher: "Ducournau", teacher_gender: "female" },
+          { name: "CE2-CM1", teacher: "LeCossec", teacher_gender: "female" },
+          { name: "CM1-CM2", teacher: "Bisacara", teacher_gender: "female" },
+          { name: "CM2", teacher: "Rakotovelo", teacher_gender: "female" } ]
+
+children = [ { first_name: "Zoé", last_name: "Delabracherie"},
+             { first_name: "Arthur", last_name: "Delabracherie"} ]
+
+users = [ { first_name: "Florence", last_name: "Dostes",
+            email: "em1@gm.com", password: "12345678"},
+          { first_name: "Florian", last_name: "Delabracherie",
+            email: "em2@gm.com", password: "12345678"},
+          { first_name: "Michael", last_name: "Ramassamy",
+            email: "sunsmiley@gmail.com", password: "Abc12345678", admin: true}]
+
+posts = [
+          { title: "Le conseil d'école" },
+          { title: "Le conseil des parents de Lange" },
+          { title: "Le bureau du conseil des parents" } ]
+
+print 'Seeding users'
+number = 1
+users.each do |userdata|
+  user = User.new(userdata)
+  user.photo_url = "http://lorempixel.com/400/200/people/#{number}"
+  number += 1
+  user.save!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding classrooms'
+code_array = ('A'..'Z').to_a + ('0'..'9').to_a
+classes.each do |classdata|
+  classroom = Classroom.new(classdata)
+  classroom.signin_code = code_array.sample(5).join
+  classroom.save!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding children'
+children.each do |childdata|
+  child = Child.new(childdata)
+  child.classroom = Classroom.find_by_name("CM2")
+  child.save!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding familylink'
+Familylink.create!(user: User.first, child: Child.first, parental_link: 2)
+Familylink.create!(user: User.all[1], child: Child.last, parental_link: 1)
+puts '..done'
+
+print 'Seeding posts'
+posts.each do |postdata|
+  post = Post.new(postdata)
+  post.content = Faker::Lorem.paragraph
+  post.user = User.last
+  post.save!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding assets'
+3.times do |number|
+  asset = Asset.new(asset_type: "image")
+  asset.url = 'https://picsum.photos/200/300'
+  asset.post = Post.all[number]
+  asset.save!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding messages'
+3.times do |number|
+  Message.create!(author: User.first, recipient: User.last, content: Faker::Lorem.paragraph(2))
+  print '.'
+  Message.create!(author: User.last, recipient: User.first, content: Faker::Lorem.paragraph(2))
+  print '.'
+  Message.create!(author: User.all[1], recipient: User.last, content: Faker::Lorem.paragraph(2))
+  print '.'
+  Message.create!(author: User.first, recipient: User.all[1], content: Faker::Lorem.paragraph(2))
+  print '.'
+end
+print 'done'
