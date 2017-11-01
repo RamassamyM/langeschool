@@ -1,0 +1,3 @@
+class FamilylinksController < ApplicationController
+
+end
