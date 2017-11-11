@@ -1,18 +1,41 @@
 <%= render "shared/link-to-backposts" %>
-
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2><%= @post.title %></h2>
-        <% if current_user.admin %>
-          <%= link_to '', edit_post_path(@post), class: "fa  fa-pencil" %>
-          <%= link_to '', post_path(@post), class: "fa  fa-trash-o", method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
-        <% end %>
-        <p><%= @post.content %></p>
-      </div>
+<div class="parallax">
+  <div class="parallax-layer parallax-background" style="background-image: url(<%= image_path('pattern.png') %>); background-repeat: repeat;">
+  </div>
+  <div class="parallax-layer parallax-content wrapper">
+    <div class="container">
+        <div class="post-wrapper">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="post-image-show post-image-show-width " style="background-image: url(<%= image_path(@post.assets? ? @post.assets.first.url : 'post-default.png') %>);">
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="post-details post-details-padding">
+                <div class="post-text">
+                  <div class="post-header post-header-show">
+                    <h2><%= @post.title %></h2>
+                    <% if current_user.admin %>
+                      <%= link_to '', edit_post_path(@post), class: "fa  fa-pencil" %>
+                      <%= link_to '', post_path(@post), class: "fa  fa-trash-o", method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+                    <% end %>
+                  </div>
+                  <div class="post-content">
+                    <p><%= @post.content %></p>
+                  </div>
+                </div>
+                <div class="post-footer">
+                  <%= image_tag 'user.png', class: 'post-avatar' %>
+                  <div class="post-footer-details">
+                    <h4><%= @post.user.fullname %></h4>
+                    <p><%= @post.created_at.strftime('%d-%m-%Y') %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>
-
 <% content_for :title, "Article" %>
