@@ -1,2 +1,74 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path("banner-home2.jpg") %>);">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-md-offset-2 col-md-8">
+        <div class="banner-content">
+          <%= image_tag('logo-white.png', class: 'logo-home') %>
+          <p>L'application destinée à tous les parents de l'école par le Conseil des Parents de Lange pour tout connaître sur l'actualité de l'école et communiquer entre parents</p>
+          <div class="btn-inline">
+            <%= link_to t(".sign_in", default: "Je me connecte"), new_user_session_path, class: "btn btn-primary btn-lg btn-home" %>
+            <%= link_to t(".sign_in", default: "Je m'inscris"), new_user_registration_path, class: "btn btn-primary btn-lg btn-home" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper-features padded">
+  <div class="container">
+  <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-sm-4 text-center icons">
+        <div class="icon-wrapper">
+          <i class="fa fa-cloud icon-large"></i>
+        </div>
+        <h3>Vous informer</h3>
+        <p>Notre blog avec toutes les actualités</br>de la vie de l'école <br>et du Conseil des Parents</p>
+      </div>
+      <div class="col-sm-4 text-center icons">
+        <div class="icon-wrapper">
+          <i class="fa fa-rocket icon-large"></i>
+        </div>
+        <h3>Communiquer</h3>
+        <p>Communiquer avec d'autres parents</br>et les membres du bureau <br>du Conseil des Parents</p>
+      </div>
+      <div class="col-sm-4 text-center icons">
+        <div class="icon-wrapper">
+          <i class="fa fa-lightbulb-o icon-large"></i>
+        </div>
+        <h3>Vous donner la parole</h3>
+        <p>Faites nous remonter vos besoins <br> et échangeons sur les thèmes liés</br>à la vie de l'école et à l'éducation</p>
+      </div>
+    </div><!-- /.row -->
+  </div>
+</div>
+
+<div class="wrapper-fcpe padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-4">
+        <div class="flexed-center">
+          <div class="wrapper-logo-fcpe">
+            <%= svg 'fcpe-color' %>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-8">
+        <div class="text-fcpe">
+          <h3>Notre affiliation à un réseau national</h3>
+          <p>Pour bénéficier de conseils, d'une facilité de fonctionnement et être en réseau avec d'autres associations de parents d'élèves, le Conseil des Parents de Lange est affilié à la fédération FCPE. La FCPE est une association loi 1901 reconnue d'utilité publique. Ce n’est ni un syndicat, ni un parti politique mais un vaste réseau de parents d’élèves adhérents et élus dans les écoles maternelles, élémentaires, les collèges et les lycées de l’enseignement public. Première fédération de parents d'élèves, la FCPE participe à la vie scolaire pour défendre l'intérêt des enfants et représenter les parents auprès des institutions et des pouvoirs publics. Près de 1 300 000 parents ont voté pour elle aux dernières élections scolaires.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
+  </div>
+  <div class="footer-copyright">
+    Site propulsé avec <i class="fa fa-heart"></i> par le Conseil des Parents de Lange
+  </div>
+</div>

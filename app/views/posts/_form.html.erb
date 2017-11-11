@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container text-center">
+    <div class="row">
+      <div class="margined">
+        <h2>Créer ou éditer un article</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <%= simple_form_for post do |f| %>
+          <%= f.input :title, label: false, placeholder: "Titre"%>
+          <%= f.input :content, label: false, placeholder: "Texte de l'article", input_html: {:rows => 10} %>
+          <%= f.submit "Sauvegarder", class: "btn btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,29 @@
-<h2>Log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+<div class="distributed">
+  <%= render "shared/link-to-backhome" %>
+  <div>
+    <!-- %= image_tag "onmuze_logo_black_symbol.png", class: "logo-devise-pages"% -->
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+  <div class="cheek"></div>
+</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="margined">
+        <h2>Je me connecte</h2>
+      </div>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true, label: false, placeholder: "Email" %>
+          <%= f.input :password, required: false, label: false, placeholder: "Mot de passe" %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", class: "btn btn-danger btn-form-devise" %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<% content_for :title, "My account" %>

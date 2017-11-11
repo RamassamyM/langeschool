@@ -1,0 +1,123 @@
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Paddings
+.padded {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.margined {
+  margin: 15px 0px;
+}
+
+.sm-padded {
+  padding-bottom: 10px;
+}
+
+.sm-margin {
+  margin-bottom: 20px;
+}
+
+// Color font
+.white-link {
+  color: white;
+  font-weight: lighter;
+  &:hover {
+    color: $red;
+  }
+}
+
+.white-font {
+  color: white;
+  font-weight: lighter;
+}
+
+.grey-font {
+  color: $medium-gray;
+}
+
+// Backgrounds
+.bg-black {
+  background: $black;
+}
+.bg-grey {
+  background: $dark-gray;
+}
+.bg-blue {
+  background: $blue;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+.custom-red-btn {
+  background-color: $brand-color-red;
+  color: white;
+  &:hover {
+    color: white;
+    background-color: #ea3156;
+  }
+}
+
+// Margins
+.left-marged {
+  margin-left: 20px;
+}
+
+.right-marged {
+  margin-right: 20px;
+}
+
+.top-marged {
+  margin-top: 20px;
+}
+
+.bottom-marged {
+  margin-bottom: 20px;
+}
+
+.no-marge {
+  margin: 0;
+}
+
+// alignment and distribution
+.distributed {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flexed-left {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flexed-inline {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.flexed-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-link-style {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.cheek {
+  width: 100px;
+}

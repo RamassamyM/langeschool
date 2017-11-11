@@ -1,0 +1,23 @@
+// .logo-home {
+//     height: 50px;
+//     background-size: cover;
+//     background-position: center;
+//   }
+
+@media(max-width: 720px) {
+  .logo-home {
+    height: 40px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media(min-width: 721px) {
+  .logo-home {
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+  }
+}

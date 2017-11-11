@@ -1,0 +1,54 @@
+.wrapper-fcpe {
+  border: 1px solid #F1F1E5;
+  background-color: white;
+  p {
+    font-size: 14px;
+  }
+  h3 {
+    color: $blue;
+    font-size: 1.4em;
+    // font-weight: 600;
+  }
+}
+
+.wrapper-logo-fcpe {
+  width: 150px;
+}
+
+.wrapper-features {
+  // padding-top: 50px;
+  // padding-bottom: 50px;
+  h3 {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  p {
+    color: $dark-blue;
+  }
+}
+
+.wrapper {
+  padding: 60px 0px 60px 0px;
+}
+
+.wrapper-form {
+  padding: 60px 0px 45px 0px;
+}
+
+.promote-wrapper {
+  background-color: $dark-gray;
+  color: white;
+
+  span {
+    font-weight: lighter;
+  }
+}
+
+.page-wrapper{
+  min-height: 100%;
+}
+
+.page-wrapper-navbar-margin {
+  margin-top: 70px;
+}

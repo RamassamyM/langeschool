@@ -1,1 +1,34 @@
-// Specific CSS for your home-page
+.icons .icon-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  margin: 2em auto 0;
+  padding: 3em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons .icon-wrapper .icon-large {
+  color: $blue;
+  font-size: 4em;
+}
+
+.link-to-back {
+  padding: 20px;
+  a {
+    color: white;
+  }
+  a:hover {
+    color: $red;
+    text-decoration: none;
+  }
+}
+
+.text-fcpe {
+  p {
+    color: $dark-gray;
+  }
+}
