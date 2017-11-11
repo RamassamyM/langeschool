@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 20171031142606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assets", force: :cascade do |t|
-    t.string "url"
-    t.string "asset_type"
-    t.bigint "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_assets_on_post_id"
-  end
-
   create_table "children", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -73,6 +64,7 @@ ActiveRecord::Schema.define(version: 20171031142606) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
+    t.string "photo_url"
     t.string "post_type"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -112,7 +104,6 @@ ActiveRecord::Schema.define(version: 20171031142606) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  add_foreign_key "assets", "posts"
   add_foreign_key "children", "classrooms"
   add_foreign_key "familylinks", "children"
   add_foreign_key "familylinks", "users"

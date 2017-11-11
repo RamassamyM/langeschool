@@ -7,6 +7,9 @@
     </div>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <div class="post-image-show post-image-show-width " style="background-image: url(<%= image_path(@post.photo.present? ? @post.photo : 'post-default.png') %>);">
+          <%= render 'posts/update_picture', post: @post %>
+        </div>
         <%= simple_form_for post do |f| %>
           <%= f.input :title, label: false, placeholder: "Titre"%>
           <%= f.input :content, label: false, placeholder: "Texte de l'article", input_html: {:rows => 10} %>

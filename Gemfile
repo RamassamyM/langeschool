@@ -17,6 +17,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'faker', :git => 'git://github.com/stympy/faker.git'
+gem 'cloudinary'
+gem 'carrierwave', '~> 0.11.2'
 
 group :development, :test do
   gem 'pry-byebug'

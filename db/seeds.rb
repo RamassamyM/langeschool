@@ -16,9 +16,6 @@ puts 'done'
 print 'Destroying classrooms...'
 Classroom.destroy_all
 puts 'done'
-print "Destroying assets..."
-Asset.destroy_all
-puts 'done'
 print 'Destroying posts...'
 Post.destroy_all
 puts 'done'
@@ -93,17 +90,8 @@ posts.each do |postdata|
   post = Post.new(postdata)
   post.content = Faker::Lorem.paragraph
   post.user = User.last
+  post.photo = 'https://picsum.photos/200/300'
   post.save!
-  print '.'
-end
-puts 'done'
-
-print 'Seeding assets'
-3.times do |number|
-  asset = Asset.new(asset_type: "image")
-  asset.url = 'https://picsum.photos/200/300'
-  asset.post = Post.all[number]
-  asset.save!
   print '.'
 end
 puts 'done'

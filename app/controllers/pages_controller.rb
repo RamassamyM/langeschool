@@ -3,4 +3,10 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def parentscouncil
+  end
+
+  def schoolcouncil
+  end
 end
