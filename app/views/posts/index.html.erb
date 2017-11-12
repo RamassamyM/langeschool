@@ -15,7 +15,11 @@
         <div class="post-wrapper">
           <div class="row">
             <div class="col-xs-12 col-sm-5">
-              <div class="post-image" style="background-image: url(<%= image_path(post.photo? ? post.photo : 'post-default.png') %>);">
+              <div class="post-image" style="background-image: url(<%=
+              image_path(post.photo? ? post.photo : 'post-default.png') %>);">
+                <% if current_user.admin %>
+                  <%= render 'posts/update_picture', post: post %>
+                <% end %>
               </div>
             </div>
             <div class="col-xs-12 col-sm-7">
