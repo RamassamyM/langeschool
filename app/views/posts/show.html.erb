@@ -7,7 +7,7 @@
         <div class="post-wrapper">
           <div class="row">
             <div class="col-xs-12">
-              <div class="post-image-show post-image-show-width " style="background-image: url(<%= image_path(@post.photo.present? ? @post.photo : 'post-default.png') %>);">
+              <div class="post-image-show post-image-show-width " style="background-image: url(<%= image_path(@post.photo? ? @post.photo : 'post-default.png') %>);">
                 <%= render 'posts/update_picture', post: @post %>
               </div>
             </div>
