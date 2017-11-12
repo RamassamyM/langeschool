@@ -43,7 +43,7 @@ users = [ { first_name: "Florence", last_name: "Dostes",
           { first_name: "Florian", last_name: "Delabracherie",
             email: "em2@gm.com", password: "12345678"},
           { first_name: "Michael", last_name: "Ramassamy",
-            email: "sunsmiley@gmail.com", password: "Abc12345678", admin: true}]
+            email: "ramassamymichael@gmail.com", password: "Abc12345678", admin: true}]
 
 posts = [
           { title: "Le conseil d'école" },
@@ -57,6 +57,7 @@ users.each do |userdata|
   user.photo_url = "http://lorempixel.com/400/200/people/#{number}"
   number += 1
   user.save!
+  user.confirm
   print '.'
 end
 puts 'done'
