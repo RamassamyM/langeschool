@@ -1,0 +1,40 @@
+.member-card {
+  // display: flex;
+  // align-items : flex-start;
+  // justify-content: center;
+  margin: 20px 0px;
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.card-user {
+  width: 80%;
+  max-width: 220px;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+.card-category {
+  text-align: center;
+  font-size: 24px;
+  color: $medium-gray;
+  text-transform: uppercase;
+  margin: 10px auto;
+  font-weight: bold;
+}
+.card-description {
+  text-align: center;
+  margin: 10px auto;
+  h2 {
+    font-size: 20px;
+    color: $dark-gray;
+  }
+  p {
+    font-size: 14px;
+    opacity: 0.7;
+    font-weight: lighter;
+  }
+}
