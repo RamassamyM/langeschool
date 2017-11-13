@@ -1,5 +1,5 @@
 ActionMailer::Base.smtp_settings = {
-  address: "smtp.gmail.com",
+  address: "smtp.sparkpostmail.com",
   port: 587,
   domain: 'gmail.com',
   user_name: ENV['GMAIL_ADDRESS'],
