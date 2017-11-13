@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20171112154749) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
-    t.string "photo_url"
     t.boolean "in_directory", default: true, null: false
     t.boolean "admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

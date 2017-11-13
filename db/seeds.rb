@@ -54,7 +54,6 @@ print 'Seeding users'
 number = 1
 users.each do |userdata|
   user = User.new(userdata)
-  user.avatar_url = "http://lorempixel.com/400/200/people/#{number}"
   number += 1
   user.save!
   user.confirm
