@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
   has_many :recipient_messages, class_name: 'Message', foreign_key: 'recipient_id'
   validates :first_name, :last_name, presence: true
+  has_attachment :avatar
 
   def fullname
     self.first_name + " " + self.last_name
