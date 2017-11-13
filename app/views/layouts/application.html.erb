@@ -12,6 +12,7 @@
     <%= add_appropriate_navbar %>
     <%= render 'shared/flashes' %>
     <!-- %= render 'shared/cookiebox'  %-->
+    <div class="background-fixed" style="background-image: url(<%= image_path('pattern.png') %>);"></div>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
