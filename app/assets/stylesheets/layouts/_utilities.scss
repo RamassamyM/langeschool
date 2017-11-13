@@ -4,7 +4,7 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
-// Paddings
+// Paddings ******************************
 .padded {
   padding-top: 5em;
   padding-bottom: 5em;
@@ -22,14 +22,69 @@
   margin-bottom: 20px;
 }
 
-// Color font
+// Color links ******************************
 .white-link {
   color: white;
   font-weight: lighter;
   &:hover {
-    color: $red;
+    color: $blue;
   }
 }
+
+.grey-link {
+  color: $gray;
+  font-weight: lighter;
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.blue-link {
+  color: $blue;
+  opacity: 0.8;
+  font-weight: lighter;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.red-link {
+  color: $red;
+  opacity: 0.8;
+  font-weight: lighter;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.link-no-style {
+  color: white;
+  &:hover {
+    color: white;
+  }
+}
+
+.link-to-back {
+  padding: 20px;
+  position: fixed;
+  top: 80px;
+  left: 10px;
+  z-index: 10;
+  a, i {
+    color: white;
+  }
+  &:hover {
+    a, i {
+      color: $blue
+    }
+  &:active {
+    text-decoration: none;
+  }
+  }
+}
+
+// Color fonts ******************************
 
 .white-font {
   color: white;
@@ -40,7 +95,7 @@
   color: $medium-gray;
 }
 
-// Backgrounds
+// Backgrounds ******************************
 .bg-black {
   background: $black;
 }
@@ -54,16 +109,7 @@
   background: #3b5998;
 }
 
-.custom-red-btn {
-  background-color: $brand-color-red;
-  color: white;
-  &:hover {
-    color: white;
-    background-color: #ea3156;
-  }
-}
-
-// Margins
+// Margins ******************************
 .left-marged {
   margin-left: 20px;
 }
@@ -84,7 +130,7 @@
   margin: 0;
 }
 
-// alignment and distribution
+// alignment and distribution ******************************
 .distributed {
   width: 100%;
   display: flex;
@@ -111,13 +157,15 @@
   align-items: center;
 }
 
-.no-link-style {
-  color: white;
-  &:hover {
-    color: white;
-  }
-}
-
 .cheek {
   width: 100px;
+}
+
+// icon utilities ******************************
+.icon-color {
+  color: $light-gray;
+  cursor: pointer;
+  &:hover {
+    color: $blue;
+  }
 }

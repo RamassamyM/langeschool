@@ -1,3 +1,5 @@
 <%= render "shared/link-to-backposts" %>
-<%= render partial: "form", locals: {post: @post} %>
+<% if current_user.admin %>
+  <%= render partial: "form", locals: {post: @post} %>
+<% end %>
 <% content_for :title, "Nouvel article" %>

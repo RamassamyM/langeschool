@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  mount Attachinary::Engine => "/attachinary"
   root to: 'pages#home'
   get 'home', to: 'pages#home'
   get 'parentscouncil', to: 'pages#parentscouncil'

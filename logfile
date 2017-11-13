@@ -5,3 +5,8 @@
 2017-11-09 15:40:27.589 CET [28354] LOG:  database system is ready to accept connections
 2017-11-09 15:40:39.785 CET [28419] FATAL:  database "langeschool_development" does not exist
 2017-11-09 16:38:44.032 CET [28359] LOG:  using stale statistics instead of current ones because stats collector is not responding
+2017-11-13 09:08:23.196 CET [4032] LOG:  listening on IPv6 address "::1", port 5432
+2017-11-13 09:08:23.196 CET [4032] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2017-11-13 09:08:23.197 CET [4032] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2017-11-13 09:08:23.215 CET [4033] LOG:  database system was shut down at 2017-11-13 09:08:12 CET
+2017-11-13 09:08:23.220 CET [4032] LOG:  database system is ready to accept connections

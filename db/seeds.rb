@@ -91,7 +91,7 @@ posts.each do |postdata|
   post = Post.new(postdata)
   post.content = Faker::Lorem.paragraph
   post.user = User.last
-  post.photo = 'https://picsum.photos/200/300'
+  # post.photo = 'https://picsum.photos/200/300'
   post.save!
   print '.'
 end

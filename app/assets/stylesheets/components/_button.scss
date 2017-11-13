@@ -17,12 +17,62 @@
   }
 }
 
-.btn-home {
-  margin: 10px;
-  font-size: 20px;
-  font-weight: lighter;
-}
-
 .btn-post {
   font-size: 18px;
+}
+
+.btn-round {
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+.btn-round-small {
+  padding: 8px 10px;
+  border-radius: 50px;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.btn-round-big {
+  margin: 10px;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+.btn-outlined-gray {
+  color: $gray;
+  border: 1px solid $gray;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $blue;
+    border-color: $blue;
+  }
+}
+
+.btn-outlined-blue {
+  color: $blue;
+  border: 1px solid $blue;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: $blue;
+    border-color: $blue;
+  }
+}
+
+.btn-outlined-white {
+  color: white;
+  border: 1px solid white;
+  &:hover {
+    text-decoration: none;
+    color: $blue;
+    border-color: $blue;
+  }
 }

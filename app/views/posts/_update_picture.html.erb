@@ -1,12 +1,11 @@
+<!-- not used (was used with only onephoto or gem carrierwave but do not work with attachinary&multiple photo) -->
 <% if post.user == current_user %>
   <div class="edit-img">
-    <div class="update-img">
-      <%= simple_form_for post do |f| %>
-        <%= f.label :photo do %>
-          <p>Editer <i class="fa fa-camera" aria-hidden="true"></i></p>
-        <% end %>
-        <%= f.input :photo, as: :file, label: false, input_html: { class: "hidden", onchange: "this.form.submit();" } %>
+    <%= simple_form_for post do |f| %>
+      <%= f.label :photo do %>
+        <i class="fa fa-camera fa-lg icon-color" aria-hidden="true"></i>
       <% end %>
-    </div>
+      <%= f.input :photos, as: :attachinary, label: false, input_html: { class: "", onchange: "this.form.submit();" } %>
+    <% end %>
   </div>
 <% end %>

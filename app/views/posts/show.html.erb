@@ -7,18 +7,13 @@
         <div class="post-wrapper">
           <div class="row">
             <div class="col-xs-12">
-              <div class="post-image-show post-image-show-width " style="background-image: url(<%= image_path(@post.photo? ? @post.photo : 'post-default.png') %>);">
-                <%= render 'posts/update_picture', post: @post %>
-              </div>
-            </div>
-            <div class="col-xs-12">
-              <div class="post-details post-details-padding">
+              <div class="post-details-show post-details-padding">
                 <div class="post-text">
                   <div class="post-header post-header-show">
                     <h2><%= @post.title %></h2>
                     <% if current_user.admin %>
-                      <%= link_to '', edit_post_path(@post), class: "fa  fa-pencil" %>
-                      <%= link_to '', post_path(@post), class: "fa  fa-trash-o", method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
+                      <%= link_to '', edit_post_path(@post), class: "fa  fa-pencil fa-lg icon-color" %>
+                      <%= link_to '', post_path(@post), class: "fa  fa-trash-o fa-lg icon-color", method: :delete, data: { confirm: "Êtes-vous sûr ?" } %>
                     <% end %>
                   </div>
                   <div class="post-content">
@@ -34,6 +29,16 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="row">
+            <% if @post.photos? %>
+              <% @post.photos.each do |photo| %>
+                <div class="col-xs-12 col-md-6">
+                  <div class="post-image post-image-wrapper-height top-marged" style="background-image: url(<%= cl_image_path(photo.path) %>);">
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
     </div>
