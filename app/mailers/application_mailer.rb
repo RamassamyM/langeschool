@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'parentsdelange@gmail.com'
+  default from: 'contact@langeconnect.fr'
   layout 'mailer'
 end
