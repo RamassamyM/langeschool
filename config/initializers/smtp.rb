@@ -1,7 +1,7 @@
 ActionMailer::Base.smtp_settings = {
   address: "smtp.sparkpostmail.com",
   port: 587,
-  domain: 'gmail.com',
+  domain: 'sparkpostmail.com',
   user_name: ENV['SPARKPOST_USERNAME'],
   password: ENV['SPARKPOST_PASSWORD'],
   authentication: :login,
