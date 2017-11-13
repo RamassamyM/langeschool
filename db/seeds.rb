@@ -57,6 +57,7 @@ users.each do |userdata|
   number += 1
   user.save!
   user.confirm
+  user.avatar_url =  'user.png'
   print '.'
 end
 puts 'done'

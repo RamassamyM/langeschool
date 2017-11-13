@@ -10,7 +10,12 @@
         <%= simple_form_for post do |f| %>
           <%= f.input :title, label: false, placeholder: "Titre"%>
           <%= f.input :content, label: false, placeholder: "Texte de l'article", input_html: {:rows => 10} %>
-          <%= f.input :photos, as: :attachinary %>
+          <label>
+            <div class="drop-image">
+              Ajouter des photos
+            </div>
+            <%= f.input :photos, as: :attachinary, label: false %>
+          </label>
           <%= f.submit "Sauvegarder", class: "btn btn-danger" %>
         <% end %>
       </div>

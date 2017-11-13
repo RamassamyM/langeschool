@@ -17,3 +17,41 @@ img-responsive {
   right: 30px;
   top: 10px;
 }
+
+
+// attachinary uploader css*************************************
+
+.attachinary_container ul {
+  list-style-type: none;
+}
+
+.drop-image {
+  border: 3px dashed $light-gray;
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  &:hover {
+  background: $light-gray;
+  }
+}
+
+input[type='file'].attachinary-input {
+  display: none;
+}
+
+.attachinary_container ul li {
+  img {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+  }
+  a {
+    color: $gray;
+    font-weight: lighter;
+    &:hover {
+      color: $blue;
+    }
+  }
+}
+
+
