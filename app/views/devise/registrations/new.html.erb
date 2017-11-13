@@ -1,14 +1,12 @@
-<div class="distributed">
-  <%= render "shared/link-to-backhome" %>
-  <div>
-    <!-- %= image_tag "onmuze_logo_black_symbol.png", class: "logo-devise-pages"% -->
-  </div>
-  <div class="cheek"></div>
-</div>
+<%= render "shared/backlink" %>
+<div class="under-navbar-fixed top"></div>
 <div class="container text-center">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
-      <div class="margined">
+      <div class="big-top-marged">
+        <div>
+          <%= image_tag "logo-white.png", class: "logo-devise-pages"%>
+        </div>
         <h2>Je m'inscris</h2>
       </div>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, welcome: true)) do |f| %>
@@ -21,7 +19,7 @@
           <%= f.input :password_confirmation, required: true, label: false, placeholder: "Confirmer le mot de passe." %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn btn-danger btn-form-devise" %>
+          <%= f.button :submit, "Créer mon compte", class: "btn btn-danger btn-form-devise" %>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>

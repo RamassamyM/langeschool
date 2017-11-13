@@ -1,4 +1,4 @@
-<%= render "shared/link-to-backposts" %>
+<%= render "shared/backlink" %>
 <% if current_user.admin %>
   <%= render partial: "form", locals: {post: @post} %>
 <% end %>

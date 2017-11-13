@@ -2,7 +2,6 @@ module ApplicationHelper
 
   def add_appropriate_navbar
     unless !(user_signed_in?) && is_home || user_credential_pages
-    # unless user_credential_pages
       render 'shared/navbar'
     end
   end
