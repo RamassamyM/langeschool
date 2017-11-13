@@ -16,21 +16,6 @@
   font-size: 4em;
 }
 
-.link-to-back {
-  padding: 20px;
-  position: fixed;
-  top: 80px;
-  left: 10px;
-  z-index: 10;
-  a {
-    color: white;
-  }
-  a:hover {
-    color: $red;
-    text-decoration: none;
-  }
-}
-
 .text-fcpe {
   p {
     color: $dark-gray;

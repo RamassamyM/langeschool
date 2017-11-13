@@ -4,35 +4,13 @@ body {
     color: white
   }
 
-i {
+a, i {
   color: $blue;
+  &:hover {
+    color: $dark-blue;
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
 }
-
-a:hover {
-  color: $blue;
-  text-decoration: none;
-}
-
-.parallax-background {
-  transform: translateZ(-1px);
-}
-
-.parallax-content {
-  transform: translateZ(0);
-}
-
-.parallax {
-  perspective: 1px;
-  height: calc(100vh - 70px);
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.parallax-layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
