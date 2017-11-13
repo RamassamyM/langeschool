@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method     = :sparkpost
   config.action_mailer.default_url_options = { host: "langeconnect.herokuapp.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 

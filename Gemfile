@@ -34,3 +34,7 @@ group :development, :test do
   gem "rails-erd"
   gem "letter_opener"
 end
+
+group :production do
+  gem 'sparkpost_rails', :git => 'git://github.com/the-refinery/sparkpost_rails.git'
+end
