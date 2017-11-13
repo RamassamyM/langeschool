@@ -54,7 +54,7 @@ print 'Seeding users'
 number = 1
 users.each do |userdata|
   user = User.new(userdata)
-  user.photo_url = "http://lorempixel.com/400/200/people/#{number}"
+  user.avatar_url = "http://lorempixel.com/400/200/people/#{number}"
   number += 1
   user.save!
   user.confirm
@@ -91,7 +91,6 @@ posts.each do |postdata|
   post = Post.new(postdata)
   post.content = Faker::Lorem.paragraph
   post.user = User.last
-  # post.photo = 'https://picsum.photos/200/300'
   post.save!
   print '.'
 end
