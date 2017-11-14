@@ -19,9 +19,15 @@ puts 'done'
 print 'Destroying posts...'
 Post.destroy_all
 puts 'done'
-# print 'Destroying messages...'
-# Message.destroy_all
-# puts 'done'
+print 'Destroying messages...'
+Message.destroy_all
+puts 'done'
+print 'Destroying participantlinks...'
+Participantlink.destroy_all
+puts 'done'
+print 'Destroying conversations...'
+Conversation.destroy_all
+puts 'done'
 print 'Destroying users...'
 User.destroy_all
 puts 'done'
@@ -57,7 +63,6 @@ users.each do |userdata|
   number += 1
   user.save!
   user.confirm
-  user.avatar_url =  'user.png'
   print '.'
 end
 puts 'done'
@@ -96,15 +101,26 @@ posts.each do |postdata|
 end
 puts 'done'
 
-# print 'Seeding messages'
-# 3.times do |number|
-#   Message.create!(author: User.first, recipient: User.last, content: Faker::Lorem.paragraph(2))
-#   print '.'
-#   Message.create!(author: User.last, recipient: User.first, content: Faker::Lorem.paragraph(2))
-#   print '.'
-#   Message.create!(author: User.all[1], recipient: User.last, content: Faker::Lorem.paragraph(2))
-#   print '.'
-#   Message.create!(author: User.first, recipient: User.all[1], content: Faker::Lorem.paragraph(2))
-#   print '.'
-# end
-# print 'done'
+print 'Seeding conversations'
+3.times do
+  Conversation.create!
+  print '.'
+end
+puts 'done'
+
+print 'Seeding participantlinks'
+3.times do |number|
+  3.times do |num|
+    Participantlink.create!(conversation: Conversation.all[number], user: User.all[num])
+    print '.'
+  end
+end
+puts 'done'
+
+print 'Seeding messages'
+3.times do |number|
+  3.times do |num|
+    Message.create!(author: User.all[number], conversation: Conversation.all[num], is_read: false, content: Faker::Lorem.paragraph(2))
+    print '.'
+  end
+end

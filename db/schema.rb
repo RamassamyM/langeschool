@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20171114184433) do
     t.text "content"
     t.bigint "conversation_id"
     t.bigint "author_id"
-    t.boolean "is_read"
+    t.boolean "is_read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_messages_on_author_id"

@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_attachment :avatar
   has_many :participantlinks
   has_many :conversations, through: :participantlinks
+  has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
+  has_many :messages, through: :conversations
 
   def fullname
     self.first_name + " " + self.last_name
