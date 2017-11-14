@@ -7,7 +7,7 @@
         <div>
           <%= image_tag "logo-white.png", class: "logo-devise-pages"%>
         </div>
-        <h2>Renvoyer les instructions pour débloquer le compe</h2>
+        <h2>Renvoyer les instructions pour débloquer mon compe</h2>
       </div>
         <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
@@ -16,7 +16,7 @@
           <%= f.input :email, required: false, autofocus: true, label: false, placeholder: "Email" %>
         </div>
         <div class="form-actions">
-          <%= f.button :submit, "Renvoyer les instructions" , class: "btn btn-danger btn-form-devise" %>
+          <%= f.button :submit, "Renvoyer par email" , class: "btn btn-danger btn-form-devise  btn-round" %>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>

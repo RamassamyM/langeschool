@@ -9,7 +9,7 @@ module ApplicationHelper
   private
 
   def user_credential_pages
-    (controller_name == 'registrations') || (controller_name == 'sessions') || (controller_name == 'passwords')
+    (controller_name == 'registrations') || (controller_name == 'sessions') || (controller_name == 'passwords') || (controller_name == 'confirmations') || (controller_name == 'unlocks')
   end
 
   def is_home

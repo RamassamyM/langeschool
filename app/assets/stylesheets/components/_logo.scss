@@ -17,5 +17,12 @@
 }
 
 .logo-devise-pages {
-  width: 200px;
+  height: 65px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 40px;
+  &:hover {
+    border-color: $blue;
+  }
 }
