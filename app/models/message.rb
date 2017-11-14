@@ -1,5 +1,4 @@
 class Message < ApplicationRecord
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
-  belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
-  validates :author, :recipient, :content, presence: true
+  belongs_to :conversation
+  belongs_to :user
 end

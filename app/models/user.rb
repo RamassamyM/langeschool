@@ -8,10 +8,10 @@ class User < ApplicationRecord
   has_many :children, through: :familylinks
   has_many :classrooms, through: :children
   has_many :posts
-  has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
-  has_many :recipient_messages, class_name: 'Message', foreign_key: 'recipient_id'
   validates :first_name, :last_name, presence: true
   has_attachment :avatar
+  has_many :participantlinks
+  has_many :conversations, through: :participantlinks
 
   def fullname
     self.first_name + " " + self.last_name
@@ -20,5 +20,21 @@ class User < ApplicationRecord
   def name
     "#{first_name} #{last_name}"
   end
+
+  # def allmessages
+  #   Message.where(author: self).or(Message.where(recipient: self)).order(:creates_at)
+  # end
+
+  # def unreadmessages
+  #   self.author_messages.where(read: false).order(:created_at)
+  # end
+
+  # def readmessages
+  #   self.author_messages.where(read: true).order(:created_at)
+  # end
+
+  # def interlocutors
+  #   self.author_messages.group(:recipient)
+  # end
 
 end
