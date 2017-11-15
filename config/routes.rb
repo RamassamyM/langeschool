@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get 'legalterms', to: 'pages#legalterms'
   get 'subscribe_form', to: 'pages#subscribe_form'
   resources :posts
+  resources :conversations, only: [:index, :show, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
