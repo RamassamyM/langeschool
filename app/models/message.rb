@@ -7,7 +7,7 @@ class Message < ApplicationRecord
   scope :lastpublished, -> (limit = 20, offset = 0) { order(created_at: :desc).limit(limit).offset(offset) }
 
   def has_read
-    self.read = true
+    self.is_read = true
     self.save
   end
 
