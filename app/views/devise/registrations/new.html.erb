@@ -9,21 +9,25 @@
         </div>
         <h2>Je m'inscris</h2>
       </div>
-      <%= simple_form_for([resource_name, resource.with_child], url: registration_path(resource_name, welcome: true)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, welcome: true)) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
-          <%= f.input :signin_code, required: true, autofocus: true, label: false, placeholder: "Code de classe" %>
           <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom du parent" %>
           <%= f.input :last_name, required: true, autofocus: true, label: false, placeholder: "Nom de famille du parent" %>
           <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email du parent" %>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères au minimum" if @minimum_password_length), label: false, placeholder: "Mot de passe du parent" %>
           <%= f.input :password_confirmation, required: true, label: false, placeholder: "Confirmer le mot de passe" %>
-          <p>Informations sur votre enfant :</p>
-          <%= f.simple_fields_for :child  do |child_form| %>
-            <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom de votre enfant" %>
+          <%= f.simple_fields_for @familylink  do |familylink_form| %>
+            <%= familylink_form.input :parental_link,
+                                      as: :radio_buttons,
+                                      collection: [[0, "mère de"], [1, "père de"]],
+                                      label_method: :last,
+                                      value_method: :first,
+                                      label: false,
+                                      checked: 0 %>
           <% end %>
-          <%= f.simple_fields_for :familylink  do |familylink_form| %>
-            <p><%= familylink_form.label :parental_link,  %><%= fl.select :parental_link, ["mère", "père"], class: "form-inputs" %></p>
+          <%= f.simple_fields_for @child  do |child_form| %>
+            <%= child_form.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom de votre enfant" %>
           <% end %>
         </div>
         <div class="form-actions">

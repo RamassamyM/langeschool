@@ -17,8 +17,7 @@ class User < ApplicationRecord
   has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
   has_attachment :avatar
 
-  validates_inclusion_of :signin_code, in: :list_available_classrooms_code, message: "Vous devez entrer un code valide."
-  validates :first_name, :last_name, :signin_code, presence: true
+  validates :first_name, :last_name, presence: true
 
   def fullname
     self.first_name + " " + self.last_name
