@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#alertbox").fadeTo(2000, 500).slideUp(500, function(){
+  $("#alertbox").fadeTo(4000, 1).slideUp(400, function(){
       $("#alertbox").alert('close');
   });
 });

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-  devise_scope :user do
-    post 'users/sign_up', to: 'registrations#new', as: :signup
-  end
   mount Attachinary::Engine => "/attachinary"
   root to: 'pages#home'
   get 'home', to: 'pages#home'

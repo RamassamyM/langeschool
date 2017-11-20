@@ -12,10 +12,13 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, welcome: true)) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
+          <%= f.simple_fields_for :code do |f| %>
+            <%= f.input :signin_code, input_html: { value: @code ||= nil }, label: false, placeholder: "Entrer votre code d'inscription" %>
+          <% end %>
           <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom du parent" %>
           <%= f.input :last_name, required: true, autofocus: true, label: false, placeholder: "Nom de famille du parent" %>
           <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email du parent" %>
-          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères au minimum" if @minimum_password_length), label: false, placeholder: "Mot de passe du parent" %>
+          <%= f.input :password, required: true, label: false, placeholder: "Mot de passe #{('(' + @minimum_password_length.to_s + ' caractères min)') if @minimum_password_length}" %>
           <%= f.input :password_confirmation, required: true, label: false, placeholder: "Confirmer le mot de passe" %>
           <%= f.simple_fields_for @familylink  do |familylink_form| %>
             <%= familylink_form.input :parental_link,
