@@ -96,17 +96,27 @@
 }
 
 // Backgrounds ******************************
+.bg-white {
+  background-color: white;
+}
+
 .bg-black {
-  background: $black;
+  background-color: $black;
 }
 .bg-grey {
-  background: $dark-gray;
+  background-color: $dark-gray;
 }
 .bg-blue {
-  background: $blue;
+  background-color: $blue;
+}
+.bg-red {
+  background-color: $red;
+}
+.bg-yellow {
+  background-color: $yellow;
 }
 .bg-dark-blue {
-  background: #3b5998;
+  background-color: #3b5998;
 }
 
 // Margins ******************************
@@ -149,13 +159,19 @@
   align-items: center;
 }
 
-.flexed-inline {
+.flexed-right {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
 
+.flexed-right-reverse {
+  flex-direction: row-reverse;
+}
+
 .flexed-center {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,6 +179,10 @@
 
 .cheek {
   width: 100px;
+}
+
+.strip {
+  height: 100px;
 }
 
 // icon utilities ******************************

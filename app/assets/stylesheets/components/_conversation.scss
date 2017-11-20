@@ -1,0 +1,43 @@
+.conversation-background {
+  background-color: white;
+  height: calc(100vh - 200px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.conversation-title {
+  h3 {
+    font-size: 20px;
+    color: $light-blue;
+  }
+}
+
+.message-line {
+  width: 100%;
+}
+
+// .message-avatar {
+//   background: cover!important;
+//   background-position: center;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 50%;
+//   border: 1px solid $light-gray;
+// }
+
+
+.message-content {
+  width: 70%;
+  font-weight: lighter;
+  padding: 10px;
+  background: $light-blue;
+  color: white;
+  border-radius: 20px;
+  margin-top: 4px;
+  p {
+    font-size: 16px;
+  }
+}
+
+

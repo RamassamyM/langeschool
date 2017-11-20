@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'date'
 
 print 'Destroying familylinks...'
 Familylink.destroy_all
@@ -21,9 +22,6 @@ Post.destroy_all
 puts 'done'
 print 'Destroying messages...'
 Message.destroy_all
-puts 'done'
-print 'Destroying participantlinks...'
-Participantlink.destroy_all
 puts 'done'
 print 'Destroying conversations...'
 Conversation.destroy_all
@@ -102,25 +100,27 @@ end
 puts 'done'
 
 print 'Seeding conversations'
-3.times do
-  Conversation.create!
+users = User.first(3)
+3.times do |number1|
+  3.times do |number2|
+    c = Conversation.new(user1: users[number1], user2: users[number2])
+    if c.save
+      print '.'
+    else
+      print 'x'
+    end
+  end
+end
+puts 'done'
+
+
+print 'Seeding messages'
+Conversation.all.each do |conversation|
+  conversation.messages.create!(content: Faker::Simpsons.quote, author: conversation.user1)
+  print '.'
+  conversation.messages.create!(content: Faker::BackToTheFuture.quote, author: conversation.user2)
+  print '.'
+  conversation.messages.create!(content: Faker::Simpsons.quote, author: conversation.user1)
   print '.'
 end
 puts 'done'
-
-print 'Seeding participantlinks'
-3.times do |number|
-  3.times do |num|
-    Participantlink.create!(conversation: Conversation.all[number], user: User.all[num])
-    print '.'
-  end
-end
-puts 'done'
-
-print 'Seeding messages'
-3.times do |number|
-  3.times do |num|
-    Message.create!(author: User.all[number], conversation: Conversation.all[num], is_read: false, content: Faker::Lorem.paragraph(2))
-    print '.'
-  end
-end
