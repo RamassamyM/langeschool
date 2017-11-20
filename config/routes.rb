@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
   root to: 'pages#home'
   get 'home', to: 'pages#home'
+  get 'codeinput', to: 'pages#codeinput'
+  post 'codecheck', to: 'pages#codecheck'
   get 'parentscouncil', to: 'pages#parentscouncil'
   get 'subscribe', to: 'pages#subscribe'
   get 'schoolcouncil', to: 'pages#schoolcouncil'

@@ -9,7 +9,7 @@
         </div>
         <h2>Je m'inscris</h2>
       </div>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name, welcome: true)) do |f| %>
+      <%= simple_form_for([resource_name, resource.with_child], url: registration_path(resource_name, welcome: true)) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :signin_code, required: true, autofocus: true, label: false, placeholder: "Code de classe" %>
@@ -18,12 +18,12 @@
           <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email du parent" %>
           <%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères au minimum" if @minimum_password_length), label: false, placeholder: "Mot de passe du parent" %>
           <%= f.input :password_confirmation, required: true, label: false, placeholder: "Confirmer le mot de passe" %>
-          <!-- <p>Informations sur votre enfant :</p> -->
-          <%= f.simple_fields_for :familylinks  do |fl| %>
-            <%= fl.select :parental_link, required: true, label: "Lien de parenté" %>
+          <p>Informations sur votre enfant :</p>
+          <%= f.simple_fields_for :child  do |child_form| %>
+            <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom de votre enfant" %>
           <% end %>
-          <%= f.simple_fields_for :children  do |ch| %>
-            <%= ch.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom de votre enfant" %>
+          <%= f.simple_fields_for :familylink  do |familylink_form| %>
+            <p><%= familylink_form.label :parental_link,  %><%= fl.select :parental_link, ["mère", "père"], class: "form-inputs" %></p>
           <% end %>
         </div>
         <div class="form-actions">

@@ -17,11 +17,8 @@ class User < ApplicationRecord
   has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
   has_attachment :avatar
 
-  attr_accessor :signin_code
-
   validates_inclusion_of :signin_code, in: :list_available_classrooms_code, message: "Vous devez entrer un code valide."
   validates :first_name, :last_name, :signin_code, presence: true
-
 
   def fullname
     self.first_name + " " + self.last_name
@@ -39,9 +36,4 @@ class User < ApplicationRecord
     self.user1_conversations.pluck(:user2) + self.user2_conversations.pluck(:user1)
   end
 
-  private
-
-  def list_available_classrooms_code
-    Classroom.pluck(:signin_code)
-  end
 end

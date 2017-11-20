@@ -43,7 +43,7 @@
     <% else %>
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_in", default: "S'inscrire"), new_user_registration_path, class: "btn btn-sm btn-danger btn-sign-up" %>
+      <%= link_to t(".sign_in", default: "S'inscrire"), codeinput_path, class: "btn btn-sm btn-danger btn-sign-up" %>
     <% end %>
   </div>
 

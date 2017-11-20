@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def add_appropriate_navbar
-    unless !(user_signed_in?) && is_home || user_credential_pages
+    unless !(user_signed_in?) && is_home_and_codeinput || user_credential_pages
       render 'shared/navbar'
     end
   end
@@ -36,8 +36,8 @@ module ApplicationHelper
     (controller_name == 'registrations') || (controller_name == 'sessions') || (controller_name == 'passwords') || (controller_name == 'confirmations') || (controller_name == 'unlocks')
   end
 
-  def is_home
-    controller_name == "pages" && ( action_name == "home")
+  def is_home_and_codeinput
+    controller_name == "pages" && (action_name == "home" || "codeinput")
   end
 
   def svg(name)
