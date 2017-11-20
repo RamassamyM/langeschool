@@ -1,0 +1,28 @@
+#alertbox {
+    z-index: 9999;
+    padding-left: 20px;
+    padding-right: 40px;
+    background-color: $yellow;
+    border-radius: 3px;
+    border-width: 0px;
+    color: white;
+    font-weight: 200;
+    font-size: 13px;
+    margin: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: auto;
+    right: 0px;
+}
+
+@media(max-width: 575px) {
+    .alertbox-width {
+        width: calc(100% - 40px);
+    }
+}
+
+@media(min-width: 576px) {
+    .alertbox-width {
+        width: 300px;
+    }
+}

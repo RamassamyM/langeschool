@@ -1,0 +1,45 @@
+<% content_for :title, "Conversations" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Ma messagerie</h2>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @conversations.each do |conversation| %>
+      <div class="conversations-block">
+        <div class="col-xs-12">
+          <%= link_to conversation_path(conversation) do %>
+            <div class="conversation-card distributed">
+              <div class="conversation-card-interlocutor-details flexed-left">
+                <img class="conversation-card-avatar" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+                <h2><%= conversation.user1 == current_user ? conversation.user2.fullname  : conversation.user1.fullname%>
+                </h2>
+              </div>
+              <div class="conversation-card-lastinfo flexed-center">
+                <% if conversation.messages.last.author == current_user %>
+                  <div class="flexed-center conversation-card-badge badge-green"><i class="fa fa-check"></i></div>
+                  <div class="conversation-card-lastinfo-details">
+                    <h3>message envoyé</h3>
+                    <p><%= relative_time(conversation.last_update.localtime) %></p>
+                  </div>
+                <% else %>
+                  <div class="flexed-center conversation-card-badge badge-red">
+                    <%= conversation.messages.where(author: conversation.messages.last.author).where(is_read: false).count  %>
+                  </div>
+                  <div class="conversation-card-lastinfo-details">
+                    <h3>message(s) non lu(s)</h3>
+                    <p><%= relative_time(conversation.last_update.localtime) %></p>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

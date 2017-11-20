@@ -10,3 +10,34 @@
 2017-11-13 09:08:23.197 CET [4032] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2017-11-13 09:08:23.215 CET [4033] LOG:  database system was shut down at 2017-11-13 09:08:12 CET
 2017-11-13 09:08:23.220 CET [4032] LOG:  database system is ready to accept connections
+2017-11-19 11:33:36.188 CET [2092] LOG:  listening on IPv6 address "::1", port 5432
+2017-11-19 11:33:36.188 CET [2092] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2017-11-19 11:33:36.190 CET [2092] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2017-11-19 11:33:36.228 CET [2093] LOG:  database system was shut down at 2017-11-19 11:23:45 CET
+2017-11-19 11:33:36.236 CET [2092] LOG:  database system is ready to accept connections
+2017-11-19 11:48:44.003 CET [3000] ERROR:  column "author" does not exist at character 86
+2017-11-19 11:48:44.003 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:48:44.003 CET [3000] STATEMENT:  SELECT "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author"
+2017-11-19 11:48:44.006 CET [3000] ERROR:  column "author" does not exist at character 87
+2017-11-19 11:48:44.006 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:48:44.006 CET [3000] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author" LIMIT $2
+2017-11-19 11:49:50.297 CET [3000] ERROR:  column "author" does not exist at character 86
+2017-11-19 11:49:50.297 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:49:50.297 CET [3000] STATEMENT:  SELECT "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author"
+2017-11-19 11:49:50.300 CET [3000] ERROR:  column "author" does not exist at character 87
+2017-11-19 11:49:50.300 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:49:50.300 CET [3000] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author" LIMIT $2
+2017-11-19 11:49:55.844 CET [3000] ERROR:  column "author" does not exist at character 87
+2017-11-19 11:49:55.844 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:49:55.844 CET [3000] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author" LIMIT $2
+2017-11-19 11:49:59.246 CET [3000] ERROR:  column "author" does not exist at character 87
+2017-11-19 11:49:59.246 CET [3000] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:49:59.246 CET [3000] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE "messages"."conversation_id" = $1 GROUP BY "author" LIMIT $2
+2017-11-19 11:52:16.016 CET [3275] ERROR:  column "authors" does not exist at character 8
+2017-11-19 11:52:16.016 CET [3275] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:52:16.016 CET [3275] STATEMENT:  SELECT "authors" FROM "messages" WHERE "messages"."conversation_id" = $1 ORDER BY "messages"."created_at" ASC
+2017-11-19 11:52:21.909 CET [3275] ERROR:  column "author" does not exist at character 8
+2017-11-19 11:52:21.909 CET [3275] HINT:  Perhaps you meant to reference the column "messages.author_id".
+2017-11-19 11:52:21.909 CET [3275] STATEMENT:  SELECT "author" FROM "messages" WHERE "messages"."conversation_id" = $1 ORDER BY "messages"."created_at" ASC
+2017-11-19 11:52:28.438 CET [3275] ERROR:  column "user" does not exist at character 8
+2017-11-19 11:52:28.438 CET [3275] STATEMENT:  SELECT "user" FROM "messages" WHERE "messages"."conversation_id" = $1 ORDER BY "messages"."created_at" ASC

@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'date'
 
 print 'Destroying familylinks...'
 Familylink.destroy_all
@@ -21,6 +22,9 @@ Post.destroy_all
 puts 'done'
 print 'Destroying messages...'
 Message.destroy_all
+puts 'done'
+print 'Destroying conversations...'
+Conversation.destroy_all
 puts 'done'
 print 'Destroying users...'
 User.destroy_all
@@ -57,7 +61,6 @@ users.each do |userdata|
   number += 1
   user.save!
   user.confirm
-  user.avatar_url =  'user.png'
   print '.'
 end
 puts 'done'
@@ -96,15 +99,28 @@ posts.each do |postdata|
 end
 puts 'done'
 
+print 'Seeding conversations'
+users = User.first(3)
+3.times do |number1|
+  3.times do |number2|
+    c = Conversation.new(user1: users[number1], user2: users[number2])
+    if c.save
+      print '.'
+    else
+      print 'x'
+    end
+  end
+end
+puts 'done'
+
+
 print 'Seeding messages'
-3.times do |number|
-  Message.create!(author: User.first, recipient: User.last, content: Faker::Lorem.paragraph(2))
+Conversation.all.each do |conversation|
+  conversation.messages.create!(content: Faker::Simpsons.quote, author: conversation.user1)
   print '.'
-  Message.create!(author: User.last, recipient: User.first, content: Faker::Lorem.paragraph(2))
+  conversation.messages.create!(content: Faker::BackToTheFuture.quote, author: conversation.user2)
   print '.'
-  Message.create!(author: User.all[1], recipient: User.last, content: Faker::Lorem.paragraph(2))
-  print '.'
-  Message.create!(author: User.first, recipient: User.all[1], content: Faker::Lorem.paragraph(2))
+  conversation.messages.create!(content: Faker::Simpsons.quote, author: conversation.user1)
   print '.'
 end
-print 'done'
+puts 'done'

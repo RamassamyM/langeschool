@@ -4,14 +4,24 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
+
   has_many :familylinks
+  accepts_nested_attributes_for :familylinks
   has_many :children, through: :familylinks
+  accepts_nested_attributes_for :children
+
   has_many :classrooms, through: :children
   has_many :posts
+  has_many :user1_conversations, class_name: 'Conversation', foreign_key: 'user1_id'
+  has_many :user2_conversations, class_name: 'Conversation', foreign_key: 'user2_id'
   has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
-  has_many :recipient_messages, class_name: 'Message', foreign_key: 'recipient_id'
-  validates :first_name, :last_name, presence: true
   has_attachment :avatar
+
+  attr_accessor :signin_code
+
+  validates_inclusion_of :signin_code, in: :list_available_classrooms_code, message: "Vous devez entrer un code valide."
+  validates :first_name, :last_name, :signin_code, presence: true
+
 
   def fullname
     self.first_name + " " + self.last_name
@@ -21,4 +31,17 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def conversations
+    (self.user1_conversations + self.user2_conversations).sort{|a,b| a.last_update <=> b.last_update }
+  end
+
+  def conversations_partners
+    self.user1_conversations.pluck(:user2) + self.user2_conversations.pluck(:user1)
+  end
+
+  private
+
+  def list_available_classrooms_code
+    Classroom.pluck(:signin_code)
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171112154749) do
+ActiveRecord::Schema.define(version: 20171115143317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 20171112154749) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "user1_id"
+    t.bigint "user2_id"
+    t.datetime "last_update"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user1_id", "user2_id"], name: "index_conversations_on_user1_id_and_user2_id", unique: true
+    t.index ["user1_id"], name: "index_conversations_on_user1_id"
+    t.index ["user2_id"], name: "index_conversations_on_user2_id"
+  end
+
   create_table "familylinks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "child_id"
@@ -69,12 +80,13 @@ ActiveRecord::Schema.define(version: 20171112154749) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
+    t.boolean "is_read", default: false, null: false
+    t.bigint "conversation_id"
     t.bigint "author_id"
-    t.bigint "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_messages_on_author_id"
-    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -121,5 +133,6 @@ ActiveRecord::Schema.define(version: 20171112154749) do
   add_foreign_key "children", "classrooms"
   add_foreign_key "familylinks", "children"
   add_foreign_key "familylinks", "users"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "posts", "users"
 end

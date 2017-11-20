@@ -1,0 +1,73 @@
+.conversation-card {
+  background-color: white;
+  min-height: 70px;
+  padding: 10px;
+  border: 1px solid $light-gray;
+  border-width: 0 0 1px 0;
+  &:hover {
+    background-color: $yellow-hover;
+    cursor: pointer;
+  }
+}
+
+.conversation-card-avatar {
+  margin: 0px 10px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid $light-gray;
+}
+
+.conversation-card-badge {
+  margin: 0px 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+}
+
+.badge-red {
+  background-color: $red;
+}
+.badge-green {
+  background-color: $green;
+}
+
+.conversation-card-interlocutor-details {
+  h2 {
+    margin: auto 0px;
+    font-size: 18px;
+    color: $gray;
+  }
+}
+
+.conversation-card-lastinfo {
+  h3 {
+    font-size: 14px;
+    color: $gray;
+    font-weight: lighter;
+    margin: 0 0;
+  }
+  p {
+    font-size: 12px;
+    color: $medium-gray;
+    opacity: 0.7;
+    margin: 0 0;
+  }
+}
+
+.conversation-card-lastinfo-details {
+  margin: auto 0px;
+}
+
+.conversations-block:first-child {
+  .conversation-card {
+    border-radius: 8px 8px 0 0;
+  }
+}
+
+.conversations-block:last-child {
+  .conversation-card {
+    border-radius: 0 0 8px 8px;
+    border-width: 0 0 0 0;
+  }
+}

@@ -1,5 +1,12 @@
 class Message < ApplicationRecord
+  belongs_to :conversation
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
-  belongs_to :recipient, class_name: 'User', foreign_key: 'recipient_id'
-  validates :author, :recipient, :content, presence: true
+
+  validates :content, presence: true
+  after_create :conversation_last_update
+
+  def conversation_last_update
+    self.conversation.last_update = Time.zone.now
+  end
+
 end
