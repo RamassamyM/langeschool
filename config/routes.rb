@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   mount Attachinary::Engine => "/attachinary"
   root to: 'pages#home'
   get 'home', to: 'pages#home'
+  get 'codeinput', to: 'pages#codeinput'
   get 'parentscouncil', to: 'pages#parentscouncil'
   get 'subscribe', to: 'pages#subscribe'
   get 'schoolcouncil', to: 'pages#schoolcouncil'
