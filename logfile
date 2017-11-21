@@ -46,3 +46,15 @@
 2017-11-20 22:31:11.721 CET [1514] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
 2017-11-20 22:31:11.759 CET [1515] LOG:  database system was shut down at 2017-11-20 22:13:19 CET
 2017-11-20 22:31:11.767 CET [1514] LOG:  database system is ready to accept connections
+2017-11-21 01:57:59.194 CET [1514] LOG:  received smart shutdown request
+2017-11-21 01:57:59.199 CET [1514] LOG:  worker process: logical replication launcher (PID 1521) exited with exit code 1
+2017-11-21 01:57:59.199 CET [1516] LOG:  shutting down
+2017-11-21 01:57:59.207 CET [1514] LOG:  database system is shut down
+2017-11-21 09:27:13.504 CET [3243] LOG:  listening on IPv6 address "::1", port 5432
+2017-11-21 09:27:13.504 CET [3243] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2017-11-21 09:27:13.504 CET [3243] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2017-11-21 09:27:13.546 CET [3244] LOG:  database system was shut down at 2017-11-21 01:57:59 CET
+2017-11-21 09:27:13.554 CET [3243] LOG:  database system is ready to accept connections
+2017-11-21 11:06:20.532 CET [3357] ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_380f0e762c" on table "familylinks"
+2017-11-21 11:06:20.532 CET [3357] DETAIL:  Key (id)=(39) is still referenced from table "familylinks".
+2017-11-21 11:06:20.532 CET [3357] STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1

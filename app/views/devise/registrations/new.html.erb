@@ -31,6 +31,7 @@
           <% end %>
           <%= f.simple_fields_for @child  do |child_form| %>
             <%= child_form.input :first_name, required: true, autofocus: true, label: false, placeholder: "Prénom de votre enfant" %>
+            <%= child_form.input :last_name, required: true, autofocus: true, label: false, placeholder: "Nom de famille de votre enfant" %>
           <% end %>
         </div>
         <div class="form-actions">

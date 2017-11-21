@@ -57,7 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def child_params
-    params.require(:user).require(:child).permit(:first_name)
+    params.require(:user).require(:child).permit(:first_name, :last_name)
   end
 
   def familylink_params
@@ -73,7 +73,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_user
-    build_resource(sign_up_params)
+    build_resource(capitalized_names_params(sign_up_params))
   end
 
   def set_familylink
@@ -81,7 +81,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_child
-    @child = Child.new(child_params)
+    @child = Child.new(capitalized_names_params(child_params))
   end
 
   def set_classroom_to_child
@@ -91,6 +91,13 @@ class RegistrationsController < Devise::RegistrationsController
   def set_child_and_resource_to_familylink
     @familylink.child = @child
     @familylink.user = resource
+  end
+
+  def capitalized_names_params given_params
+    params = given_params
+    params[:first_name] = params[:first_name].capitalize if params[:first_name]
+    params[:last_name] = params[:last_name].capitalize if params[:last_name]
+    params
   end
 
 end
