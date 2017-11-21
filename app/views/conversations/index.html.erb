@@ -22,19 +22,25 @@
                 </h2>
               </div>
               <div class="conversation-card-lastinfo flexed-center">
-                <% if conversation.messages.last.author == current_user %>
-                  <div class="flexed-center conversation-card-badge badge-green"><i class="fa fa-check"></i></div>
-                  <div class="conversation-card-lastinfo-details">
-                    <h3>message envoyé</h3>
-                    <p><%= relative_time(conversation.last_update.localtime) %></p>
-                  </div>
+                <% if conversation.messages.any? %>
+                  <% if conversation.messages.last.author == current_user %>
+                    <div class="flexed-center conversation-card-badge badge-green"><i class="fa fa-check"></i></div>
+                    <div class="conversation-card-lastinfo-details">
+                      <h3>message envoyé</h3>
+                      <p><%= relative_time(conversation.last_update.localtime) %></p>
+                    </div>
+                  <% else %>
+                    <div class="flexed-center conversation-card-badge badge-red">
+                      <%= conversation.messages.where(author: conversation.messages.last.author).where(is_read: false).count  %>
+                    </div>
+                    <div class="conversation-card-lastinfo-details">
+                      <h3>message(s) non lu(s)</h3>
+                      <p><%= relative_time(conversation.last_update.localtime) %></p>
+                    </div>
+                  <% end %>
                 <% else %>
-                  <div class="flexed-center conversation-card-badge badge-red">
-                    <%= conversation.messages.where(author: conversation.messages.last.author).where(is_read: false).count  %>
-                  </div>
                   <div class="conversation-card-lastinfo-details">
-                    <h3>message(s) non lu(s)</h3>
-                    <p><%= relative_time(conversation.last_update.localtime) %></p>
+                    <h3>Aucun message</h3>
                   </div>
                 <% end %>
               </div>

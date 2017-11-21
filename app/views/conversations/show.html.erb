@@ -3,21 +3,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div class="conversation-display">
-          <% @messages.each do |message| %>
-            <div class="message-wrapper">
-              <div class="message-date text-center">
-                <p><%= message.created_at.localtime.strftime('%e %b, %H:%M') %></p>
-              </div>
-              <div class="message-line flexed-left <%= 'flexed-right-reverse' if current_user == message.author %>">
-                <div>
-                  <%= cl_image_tag dynamic_avatar(message.author), class: 'conversation-card-avatar' %>
-                </div>
-                <div class="message-content">
-                  <p><%= message.content %></p>
-                </div>
-              </div>
-            </div>
+        <div id="messages">
+          <% if @conversation.messages.blank? %>
+            <h4>Envoyez un premier message pour démarrer la conversation avec <%= @interlocutor.first_name %></h4>
+          <% else %>
+            <% @messages.each do |message| %>
+              <%= render 'message_block', message: message %>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -28,15 +20,13 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div class="conversation-title text-center">
-          <h3>Conversation avec <%= @interlocutor.first_name %></h3>
+        <div class="conversation-title flexed-left">
+          <%= link_to conversations_path do %>
+          <p>Inbox</p>
+          <% end %>
+          <span>Conversation avec <%= @interlocutor.first_name %></span>
         </div>
-        <%= simple_form_for [@conversation, @message], remote: true do |f| %>
-          <div class="conversation-input">
-            <%= f.input_field :content, label: false, id: "btn-submit", placeholder: "Ecrire un nouveau message..." %>
-            <button class='btn btn-primary btn-round pull-right' type="submit"><i class="fa fa-paper-plane white-font"></i></button>
-          </div>
-        <% end %>
+        <%= render partial: 'message_form', locals: { conversation: @conversation, message: @message } %>
       </div>
     </div>
   </div>

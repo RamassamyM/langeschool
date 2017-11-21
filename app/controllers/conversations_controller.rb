@@ -8,10 +8,10 @@ class ConversationsController < ApplicationController
   def show
     @message = Message.new
     @messages = @conversation.messages.order(:created_at)
-    @messages.pluck(:author_id).uniq.each do |user_id|
-      if user_id != current_user.id
-        @interlocutor = User.find(user_id)
-      end
+    if @conversation.user1 == current_user
+      @interlocutor = @conversation.user2
+    else
+      @interlocutor = @conversation.user1
     end
   end
 

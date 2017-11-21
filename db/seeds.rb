@@ -47,7 +47,7 @@ users = [ { first_name: "Florence", last_name: "Dostes",
           { first_name: "Florian", last_name: "Delabracherie",
             email: "em2@gm.com", password: "12345678"},
           { first_name: "Michael", last_name: "Ramassamy",
-            email: "ramassamymichael@gmail.com", password: "Abc12345678", admin: true}]
+            email: "ramassamymichael@gmail.com", password: "12345678", admin: true}]
 
 posts = [
           { title: "Le conseil d'école" },
