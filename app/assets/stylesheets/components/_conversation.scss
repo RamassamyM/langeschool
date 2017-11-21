@@ -1,7 +1,9 @@
-.conversation-display {
+#conversation-wrapper {
   height: calc(100vh - 200px);
-  padding: 0px 10px;
   overflow-y: scroll;
+}
+
+.conversation-display {
   display: flex;
   flex-direction: column-reverse;
 }

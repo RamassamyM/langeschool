@@ -1,23 +1,25 @@
 <div class="cover-background bg-white"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-      <div class="conversation-display">
-        <% @messages.each do |message| %>
-          <div class="message-wrapper">
-            <div class="message-date text-center">
-              <p><%= message.created_at.localtime.strftime('%e %b, %H:%M') %></p>
-            </div>
-            <div class="message-line flexed-left <%= 'flexed-right-reverse' if current_user == message.author %>">
-              <div>
-                <%= cl_image_tag dynamic_avatar(message.author), class: 'conversation-card-avatar' %>
+<div id="conversation-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+        <div class="conversation-display">
+          <% @messages.each do |message| %>
+            <div class="message-wrapper">
+              <div class="message-date text-center">
+                <p><%= message.created_at.localtime.strftime('%e %b, %H:%M') %></p>
               </div>
-              <div class="message-content">
-                <p><%= message.content %></p>
+              <div class="message-line flexed-left <%= 'flexed-right-reverse' if current_user == message.author %>">
+                <div>
+                  <%= cl_image_tag dynamic_avatar(message.author), class: 'conversation-card-avatar' %>
+                </div>
+                <div class="message-content">
+                  <p><%= message.content %></p>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
