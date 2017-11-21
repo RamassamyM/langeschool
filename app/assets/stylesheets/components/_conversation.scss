@@ -1,31 +1,25 @@
-.conversation-background {
-  background-color: white;
+#conversation-wrapper {
   height: calc(100vh - 200px);
-  padding: 20px;
+  overflow-y: scroll;
+}
+
+.conversation-display {
   display: flex;
   flex-direction: column-reverse;
 }
 
 .conversation-title {
   h3 {
-    font-size: 20px;
+    font-size: 16px;
     color: $light-blue;
+    margin-top: 9px;
+    margin-bottom: 0px;
   }
 }
 
 .message-line {
   width: 100%;
 }
-
-// .message-avatar {
-//   background: cover!important;
-//   background-position: center;
-//   width: 40px;
-//   height: 40px;
-//   border-radius: 50%;
-//   border: 1px solid $light-gray;
-// }
-
 
 .message-content {
   width: 70%;
@@ -34,10 +28,53 @@
   background: $light-blue;
   color: white;
   border-radius: 20px;
-  margin-top: 4px;
+  margin-top: 2px;
   p {
     font-size: 16px;
   }
 }
 
+textarea {
+  font-family: $body-font;
+  font-size: 14px;
+  color: $medium-gray;
+  padding: 5px 10px;
+  flex: 1 0 auto;
+  height: 70px;
+  margin-right: 20px;
+  resize: none;
+  overflow-y: scroll;
+  border-radius: 5px;
+  border: 1px solid $medium-gray;
+}
 
+.conversation-input {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bottom-fixed-input {
+  position : fixed;
+  bottom: 0px;
+  left: 0px;
+  height: 120px;
+  width: 100vw;
+  background-color: white;
+  border: 1px solid $light-gray;
+  border-width: 1px 0 0 0;
+  box-shadow: 0 -1px 5px 0 rgba(0,0,0,0.07),0 -1px 0 0 rgba(0,0,0,0.03);
+}
+
+.message-date {
+  width: 100%;
+  margin-top: 4px;
+  p {
+    color: $medium-gray;
+    font-size: 12px;
+    margin: 0px;
+  }
+}

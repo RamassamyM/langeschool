@@ -1,3 +1,9 @@
+.conversation-title {
+  h2 {
+    font-size: 25px;
+  }
+}
+
 .conversation-card {
   background-color: white;
   min-height: 70px;
@@ -13,16 +19,21 @@
 .conversation-card-avatar {
   margin: 0px 10px;
   width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 1px solid $light-gray;
 }
 
 .conversation-card-badge {
   margin: 0px 10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   color: white;
+  font-size: 14px;
+  i {
+    color: white;
+  }
 }
 
 .badge-red {
@@ -35,8 +46,9 @@
 .conversation-card-interlocutor-details {
   h2 {
     margin: auto 0px;
-    font-size: 18px;
-    color: $gray;
+    font-size: 16px;
+    color: $darker-blue;
+    font-family: $body-font;
   }
 }
 
@@ -57,6 +69,7 @@
 
 .conversation-card-lastinfo-details {
   margin: auto 0px;
+  width: 110px;
 }
 
 .conversations-block:first-child {

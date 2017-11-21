@@ -1,11 +1,16 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  #TODO : dependent destroy for familylinks and a callback after destroy user
+  # which will destroy children linked do user : the best is forbide destroy
+  # and add a field active in user so no post refactoring : change controller
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
 
-  has_many :familylinks
+  has_many :familylinks, dependent: :destroy
   accepts_nested_attributes_for :familylinks
   has_many :children, through: :familylinks
   accepts_nested_attributes_for :children
@@ -17,8 +22,12 @@ class User < ApplicationRecord
   has_many :author_messages, class_name: 'Message', foreign_key: 'author_id'
   has_attachment :avatar
 
-  validates :first_name, :last_name, presence: true
-
+  validates :first_name, :last_name, presence: { message: "Information requise" }
+  validates_format_of :first_name,
+                      :last_name,
+                      :with => /\A[A-z\u00C0-\u00ff][A-z\-' \u00C0-\u00ff]{0,23}[A-z\u00C0-\u00ff]\z/u,
+                      :on => :create,
+                      message: "25 lettres ou caractères de séparation seulement."
   def fullname
     self.first_name + " " + self.last_name
   end

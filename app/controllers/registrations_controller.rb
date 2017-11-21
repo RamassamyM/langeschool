@@ -24,12 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.persisted? && @child.persisted? && @familylink.persisted?
       if resource.active_for_authentication?
-        # set_flash_message! :notice, :signed_up
         flash[:notice] = "Veuillez cliquer sur le lien de confirmation de compte dans l'email que nous vous envoyons."
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
-        # set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         flash[:notice] = "Veuillez cliquer sur le lien de confirmation de compte dans l'email que nous vous envoyons."
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
@@ -59,7 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def child_params
-    params.require(:user).require(:child).permit(:first_name)
+    params.require(:user).require(:child).permit(:first_name, :last_name)
   end
 
   def familylink_params
@@ -75,7 +73,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_user
-    build_resource(sign_up_params)
+    build_resource(capitalized_names_params(sign_up_params))
   end
 
   def set_familylink
@@ -83,7 +81,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_child
-    @child = Child.new(child_params)
+    @child = Child.new(capitalized_names_params(child_params))
   end
 
   def set_classroom_to_child
@@ -93,6 +91,13 @@ class RegistrationsController < Devise::RegistrationsController
   def set_child_and_resource_to_familylink
     @familylink.child = @child
     @familylink.user = resource
+  end
+
+  def capitalized_names_params given_params
+    params = given_params
+    params[:first_name] = params[:first_name].capitalize if params[:first_name]
+    params[:last_name] = params[:last_name].capitalize if params[:last_name]
+    params
   end
 
 end

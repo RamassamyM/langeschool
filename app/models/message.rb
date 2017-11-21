@@ -9,4 +9,9 @@ class Message < ApplicationRecord
     self.conversation.last_update = Time.zone.now
   end
 
+  def read
+    self.is_read = true
+    self.save
+  end
+
 end
