@@ -6,6 +6,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
+    @message = Message.new
     @messages = @conversation.messages.order(:created_at)
     @messages.pluck(:author_id).uniq.each do |user_id|
       if user_id != current_user.id

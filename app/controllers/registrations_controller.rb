@@ -24,12 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.persisted? && @child.persisted? && @familylink.persisted?
       if resource.active_for_authentication?
-        # set_flash_message! :notice, :signed_up
         flash[:notice] = "Veuillez cliquer sur le lien de confirmation de compte dans l'email que nous vous envoyons."
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
-        # set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         flash[:notice] = "Veuillez cliquer sur le lien de confirmation de compte dans l'email que nous vous envoyons."
         expire_data_after_sign_in!
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
