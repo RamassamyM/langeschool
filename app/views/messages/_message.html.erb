@@ -3,6 +3,7 @@
     <p><%= message.created_at.localtime.strftime('%e %b, %H:%M') %></p>
   </div>
   <div class="message-line flexed-left <%= 'flexed-right-reverse' if current_user == message.author %>">
+    <div class="hidden author"><%= message.author.fullname %></div>
     <div>
       <%= cl_image_tag dynamic_avatar(message.author), class: 'conversation-card-avatar' %>
     </div>

@@ -1,9 +1,5 @@
 <% if @message.errors.any? %>
-  $('#new_message').html("<%= j render 'conversations/message_form', conversation: @conversation, message: @message %>");
+  $('#new_message').html("<%= j render 'messages/message_form', conversation: @conversation, message: @message %>");
 <% else %>
-  var new_message = $("<%= j render 'conversations/message_block', message: @message %>").hide();
-  $('#messages').append(new_message);
-  new_message.fadeIn();
-  $("#conversation-wrapper").scrollTop($("#conversation-wrapper")[0].scrollHeight);
-  $('#new_message').html("<%= j render 'conversations/message_form', conversation: @conversation, message: @conversation.messages.new %>");
+  $('#new_message').html("<%= j render 'messages/message_form', conversation: @conversation, message: @conversation.messages.new %>");
 <% end %>

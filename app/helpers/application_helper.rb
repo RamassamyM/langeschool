@@ -8,7 +8,7 @@ module ApplicationHelper
 
   def add_appropriate_background
     if currentpage_belongs_to?([['conversations', 'show'], ['pages', 'subscribe'], ['pages', 'parentscouncil'], ['pages', 'schoolcouncil']])
-      render 'layouts/background_colored', color: 'white'
+      render 'layouts/background_colored', color: 'verylight-gray'
     else
       render 'layouts/background_pattern'
     end

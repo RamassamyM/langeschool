@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Lange</title>
     <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
+    <%= action_cable_meta_tag if user_signed_in? %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>

@@ -46,14 +46,25 @@
 .message-content {
   max-width: 70%;
   font-weight: lighter;
-  padding: 10px;
-  background: $light-blue;
+  padding: 10px 20px;
   color: white;
   border-radius: 20px;
   margin-top: 2px;
   p {
     font-size: 16px;
     margin: 0;
+  }
+}
+
+.flexed-left {
+  .message-content {
+    background: $light-blue;
+  }
+}
+
+.flexed-right-reverse {
+  .message-content {
+    background: $blue !important;
   }
 }
 

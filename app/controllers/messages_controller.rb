@@ -8,12 +8,12 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to conversation_path(@conversation) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
+        format.js  # <-- will render `app/views/rviews/create.ejs.erb`
       end
     else
       respond_to do |format|
         format.html { render 'conversations/show' }
-        format.js  # <-- idem
+        format.js # <-- idem
       end
     end
   end
@@ -29,3 +29,6 @@ class MessagesController < ApplicationController
   end
 
 end
+
+
+

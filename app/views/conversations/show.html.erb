@@ -4,7 +4,34 @@
 <% content_for :after_js do %>
   <script>
     $(document).ready(function() {
-    $("#conversation-wrapper").scrollTop($("#conversation-wrapper")[0].scrollHeight);
+      scrollbottom();
+      // removeAvatar();
     });
+
+    if ($('meta[name=action-cable-url]').length) {
+      App.conversation = App.cable.subscriptions.create({channel: "ConversationChannel", conversation_id: <%= @conversation.id %> }, {
+        connected: function() {},
+        // Called when the subscription is ready for use on the server
+        disconnected: function() {},
+        // Called when the subscription has been terminated by the server
+        received: function(data) {
+          if (data["message"]) {
+            var currentuser = $('#messages div.flexed-right-reverse:last div.author').text();
+            $('#messages').append(data["message"]);
+            var lastauthor = $('#messages div.flexed-right-reverse:last div.author').text()
+            if ((currentuser != "") && (currentuser != lastauthor)) {
+              $('.message-line').last().removeClass('flexed-right-reverse');
+            }
+            scrollbottom();
+          }
+        },
+        // Called when there's incoming data on the websocket for this channel
+      });
+    }
+
+    function scrollbottom() {
+      $("#conversation-wrapper").scrollTop($("#conversation-wrapper")[0].scrollHeight);
+    }
+
   </script>
 <% end %>
