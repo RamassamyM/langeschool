@@ -58,3 +58,20 @@
 2017-11-21 11:06:20.532 CET [3357] ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_380f0e762c" on table "familylinks"
 2017-11-21 11:06:20.532 CET [3357] DETAIL:  Key (id)=(39) is still referenced from table "familylinks".
 2017-11-21 11:06:20.532 CET [3357] STATEMENT:  DELETE FROM "users" WHERE "users"."id" = $1
+2017-11-22 09:14:47.318 CET [2662] LOG:  listening on IPv6 address "::1", port 5432
+2017-11-22 09:14:47.319 CET [2662] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2017-11-22 09:14:47.320 CET [2662] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2017-11-22 09:14:47.364 CET [2663] LOG:  database system was shut down at 2017-11-22 00:16:53 CET
+2017-11-22 09:14:47.373 CET [2662] LOG:  database system is ready to accept connections
+2017-11-22 13:56:50.297 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 44
+2017-11-22 13:56:50.297 CET [17613] STATEMENT:  SELECT "messages".* FROM "messages" WHERE (32)
+2017-11-22 13:56:50.305 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 45
+2017-11-22 13:56:50.305 CET [17613] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE (32) LIMIT $1
+2017-11-22 13:57:33.934 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 44
+2017-11-22 13:57:33.934 CET [17613] STATEMENT:  SELECT "messages".* FROM "messages" WHERE (32)
+2017-11-22 13:57:33.936 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 45
+2017-11-22 13:57:33.936 CET [17613] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE (32) LIMIT $1
+2017-11-22 13:57:45.054 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 44
+2017-11-22 13:57:45.054 CET [17613] STATEMENT:  SELECT "messages".* FROM "messages" WHERE (32)
+2017-11-22 13:57:45.056 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 45
+2017-11-22 13:57:45.056 CET [17613] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE (32) LIMIT $1

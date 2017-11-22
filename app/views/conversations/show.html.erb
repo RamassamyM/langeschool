@@ -1,35 +1,37 @@
-<div class="cover-background bg-white"></div>
-<div id="conversation-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div id="messages">
-          <% if @conversation.messages.blank? %>
-            <h4>Envoyez un premier message pour démarrer la conversation avec <%= @interlocutor.first_name %></h4>
-          <% else %>
-            <% @messages.each do |message| %>
-              <%= render 'message_block', message: message %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="bottom-fixed-input">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-offset-2 col-sm-8">
-        <div class="conversation-title flexed-left">
-          <%= link_to conversations_path do %>
-          <p>Inbox</p>
-          <% end %>
-          <span>Conversation avec <%= @interlocutor.first_name %></span>
-        </div>
-        <%= render partial: 'message_form', locals: { conversation: @conversation, message: @message } %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'messages/messages_wrapper', conversation: @conversation, messages: @messages %>
+<%= render 'messages/message_form_wrapper', conversation: @conversation, message: @message %>
 
-<!--%= f.submit '' class: 'btn btn-primary btn-round pull-right'%-->
+<% content_for :after_js do %>
+  <script>
+    $(document).ready(function() {
+      scrollbottom();
+      // removeAvatar();
+    });
+
+    if ($('meta[name=action-cable-url]').length) {
+      App.conversation = App.cable.subscriptions.create({channel: "ConversationChannel", conversation_id: <%= @conversation.id %> }, {
+        connected: function() {},
+        // Called when the subscription is ready for use on the server
+        disconnected: function() {},
+        // Called when the subscription has been terminated by the server
+        received: function(data) {
+          if (data["message"]) {
+            var currentuser = $('#messages div.flexed-right-reverse:last div.author').text();
+            $('#messages').append(data["message"]);
+            var lastauthor = $('#messages div.flexed-right-reverse:last div.author').text()
+            if ((currentuser != "") && (currentuser != lastauthor)) {
+              $('.message-line').last().removeClass('flexed-right-reverse');
+            }
+            scrollbottom();
+          }
+        },
+        // Called when there's incoming data on the websocket for this channel
+      });
+    }
+
+    function scrollbottom() {
+      $("#conversation-wrapper").scrollTop($("#conversation-wrapper")[0].scrollHeight);
+    }
+
+  </script>
+<% end %>

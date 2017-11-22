@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   validates :content, presence: true
   after_create :conversation_last_update
+  after_create_commit { MessageBroadcastJob.perform_later self }
+  scope :for_display, -> { order(:created_at).last(50) }
 
   def conversation_last_update
     self.conversation.last_update = Time.zone.now

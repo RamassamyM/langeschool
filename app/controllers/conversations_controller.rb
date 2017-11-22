@@ -7,7 +7,7 @@ class ConversationsController < ApplicationController
 
   def show
     @message = Message.new
-    @messages = @conversation.messages.order(:created_at)
+    @messages = @conversation.messages.for_display
     if @conversation.user1 == current_user
       @interlocutor = @conversation.user2
     else
