@@ -1,0 +1,15 @@
+<div class="bottom-fixed-input">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+        <div class="conversation-title flexed-left">
+          <%= link_to conversations_path do %>
+          <p>Inbox</p>
+          <% end %>
+          <span>Conversation avec <%= @interlocutor.first_name %></span>
+        </div>
+        <%= render 'messages/message_form', conversation: conversation, message: message %>
+      </div>
+    </div>
+  </div>
+</div>
