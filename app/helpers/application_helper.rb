@@ -1,8 +1,16 @@
 module ApplicationHelper
 
   def add_appropriate_navbar
-    unless !(user_signed_in?) && is_home_and_codeinput || user_credential_pages
+    unless !(user_signed_in?) && is_home || user_credential_pages
       render 'shared/navbar'
+    end
+  end
+
+  def add_appropriate_background
+    if currentpage_belongs_to?([['conversations', 'show'], ['pages', 'subscribe'], ['pages', 'parentscouncil'], ['pages', 'schoolcouncil']])
+      render 'layouts/background_colored', color: 'white'
+    else
+      render 'layouts/background_pattern'
     end
   end
 
@@ -32,12 +40,18 @@ module ApplicationHelper
 
   private
 
-  def user_credential_pages
-    (controller_name == 'registrations') || (controller_name == 'sessions') || (controller_name == 'passwords') || (controller_name == 'confirmations') || (controller_name == 'unlocks')
+  def currentpage_belongs_to?(arrays_of_pages)
+    arrays_of_pages.find do |controller_action|
+      controller_name == controller_action[0] && action_name == controller_action[1]
+    end
   end
 
-  def is_home_and_codeinput
-    controller_name == "pages" && (action_name == "home" || "codeinput")
+  def user_credential_pages
+    ['registrations', 'sessions', 'passwords', 'confirmations', 'unlocks'].include?(controller_name)
+  end
+
+  def is_home
+    currentpage_belongs_to?([['pages', 'home']])
   end
 
   def svg(name)
