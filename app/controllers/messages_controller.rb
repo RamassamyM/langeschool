@@ -25,7 +25,8 @@ class MessagesController < ApplicationController
   end
 
   def last_update_conversation
-    Conversation.find(params[:conversation_id]).last_update = @message.created_at
+    conversation = Conversation.find(params[:conversation_id])
+    conversation.update(last_update: @message.created_at)
   end
 
 end

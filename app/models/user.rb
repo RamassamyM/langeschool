@@ -37,7 +37,8 @@ class User < ApplicationRecord
   end
 
   def conversations
-    (self.user1_conversations + self.user2_conversations).sort{|a,b| a.last_update <=> b.last_update }
+    # (self.user1_conversations + self.user2_conversations).sort{|a,b| a.last_update <=> b.last_update }
+    Conversation.where(user1: self).or(Conversation.where(user2: self)).order(last_update: :desc).last(30)
   end
 
   def conversations_partners

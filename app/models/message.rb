@@ -16,4 +16,7 @@ class Message < ApplicationRecord
     self.save
   end
 
+  def recipient
+    self.author == self.conversation.user1 ? self.conversation.user2 : self.conversation.user1
+  end
 end
