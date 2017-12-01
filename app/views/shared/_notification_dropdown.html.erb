@@ -1,0 +1,13 @@
+<div class="dropdown" id="notification-dropdown">
+  <%= link_to notifications_path, class: 'dropdown-toggle', id: 'notification-icon', role: 'button', 'data-toggle' => 'dropdown', 'aria-haspopup' => 'true', 'aria-expanded' => 'false', remote: true do %>
+    <i class="fa fa-envelope-o notification-icon"></i>
+    <span class="badge badge-primary" id="notification-badge" data-number="<%= @notification_badge_number %>"></span>
+  <% end %>
+  <ul class="dropdown-menu dropdown-menu-right dropdown-notification " id="notification-dropdown-block">
+    <% if @notification_badge_number == '0' %>
+      <li>
+        <p>Vous n'avez pas de nouvelle notification.</p>
+      </li>
+    <% end %>
+  </ul>
+</div>

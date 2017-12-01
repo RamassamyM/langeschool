@@ -38,6 +38,14 @@ module ApplicationHelper
     end
   end
 
+  def notification_class_if_seen_or_not(notification)
+    if notification.is_seen
+      'notification-box'
+    else
+      'notification-box notification-unseen'
+    end
+  end
+
   private
 
   def currentpage_belongs_to?(arrays_of_pages)

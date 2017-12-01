@@ -3,6 +3,7 @@ class Child < ApplicationRecord
   has_many :familylinks, dependent: :destroy
   has_many :users, through: :familylinks
   validates :first_name, :classroom, presence: { message: "Information requise" }
+  validates :first_name, uniqueness: { scope: :last_name }
   validates_format_of :first_name,
                       :last_name,
                       :with => /\A[A-z\u00C0-\u00ff][A-z\-' \u00C0-\u00ff]{0,23}[A-z\u00C0-\u00ff]\z/u,

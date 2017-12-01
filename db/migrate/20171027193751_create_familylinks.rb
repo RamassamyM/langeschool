@@ -6,5 +6,6 @@ class CreateFamilylinks < ActiveRecord::Migration[5.1]
       t.integer :parental_link
       t.timestamps
     end
+    add_index :familylinks, %i[user_id child_id], unique: true
   end
 end

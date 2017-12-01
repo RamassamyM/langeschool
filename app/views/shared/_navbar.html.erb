@@ -15,6 +15,7 @@
       <%= link_to "Adhérer", subscribe_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Conseil d'Ecole", schoolcouncil_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Messagerie', conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= render 'shared/notification_dropdown' %>
       <%= link_to "Annuaire", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
@@ -48,33 +49,42 @@
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><%= link_to 'L\'actu', posts_path %></li>
-        <li><%= link_to 'Conseil des Parents', parentscouncil_path %></li>
-        <li><%= link_to 'Adhérer', subscribe_path %></li>
-        <li><%= link_to 'Conseil d\'Ecole', schoolcouncil_path %></li>
-        <li><%= link_to 'Messagerie', conversations_path %></li>
-        <li><a href="#">Annuaire</a></li>
-        <li>
-          <%= link_to "#" do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-            <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
-          <% end %>
-        </li>
-      </ul>
+  <% if user_signed_in? %>
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <%= render 'shared/notification_dropdown' %>
     </div>
-  </div>
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to 'L\'actu', posts_path %></li>
+          <li><%= link_to 'Conseil des Parents', parentscouncil_path %></li>
+          <li><%= link_to 'Adhérer', subscribe_path %></li>
+          <li><%= link_to 'Conseil d\'Ecole', schoolcouncil_path %></li>
+          <li><%= link_to 'Messagerie', conversations_path %></li>
+          <li><a href="#">Annuaire</a></li>
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Déconnexion") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <% else %>
+      <div class="navbar-wagon-right hidden-md hidden-lg">
+        <%= link_to t(".sign_in", default: "S'inscrire"), new_user_registration_path, class: "btn btn-sm btn-danger btn-sign-up" %>
+      </div>
+    <% end %>
 </div>
 <div class="under-navbar-fixed"></div>

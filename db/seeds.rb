@@ -26,6 +26,9 @@ puts 'done'
 print 'Destroying conversations...'
 Conversation.destroy_all
 puts 'done'
+print 'Destroying notifications...'
+Notification.destroy_all
+puts 'done'
 print 'Destroying users...'
 User.destroy_all
 puts 'done'
@@ -85,8 +88,8 @@ end
 puts 'done'
 
 print 'Seeding familylink'
-Familylink.create!(user: User.first, child: Child.first, parental_link: 2)
-Familylink.create!(user: User.all[1], child: Child.last, parental_link: 1)
+Familylink.create!(user: User.first, child: Child.first, parental_link: 1)
+Familylink.create!(user: User.all[1], child: Child.last, parental_link: 0)
 puts '..done'
 
 print 'Seeding posts'
