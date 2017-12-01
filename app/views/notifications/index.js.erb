@@ -1,4 +1,10 @@
-$('#notification-dropdown-block').html('')
+$('#notification_dropdown_1').html('')
+$('#notification_dropdown_2').html('')
+<% if @notifications == [] %>
+  $('#notification_dropdown_1').append("<li><p>Vous n'avez pas de nouvelle notification.</p></li>");
+  $('#notification_dropdown_2').append("<li><p>Vous n'avez pas de nouvelle notification.</p></li>");
+<% end %>
 <% @notifications.each do |notification|%>
-  $('#notification-dropdown-block').append("<%= j render 'shared/notification_card', notification: notification %>");
+  $('#notification_dropdown_1').append("<%= j render 'shared/notification_card', notification: notification %>");
+  $('#notification_dropdown_2').append("<%= j render 'shared/notification_card', notification: notification %>");
 <% end %>

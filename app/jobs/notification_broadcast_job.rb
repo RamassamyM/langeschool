@@ -3,12 +3,6 @@ class NotificationBroadcastJob < ApplicationJob
 
   def perform(notification)
     ActionCable.server.broadcast \
-      "web_notifications_#{notification.user.id}",
-      { notification_message: notification.notification_message,
-        notificable_type: notification[:notificable_type],
-        is_seen: notification.is_seen,
-        notificable_id: notification.notificable_id,
-        avatar_url: "http://res.cloudinary.com/langeconnect/image/upload/\
-                     #{notification.user.avatar.path}" }
+      "web_notifications_#{notification.user.id}", increment: 1
   end
 end

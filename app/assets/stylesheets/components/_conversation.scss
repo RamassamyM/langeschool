@@ -6,11 +6,17 @@
 #messages {
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
   h4 {
     margin: 40px 20px;
     color: $light-gray;
-    max-width: 70%
+    max-width: 70%;
   }
+}
+
+.wrapper-message-avatar {
+  height: 40px;
+  width: 60px;
 }
 
 .conversation-title {

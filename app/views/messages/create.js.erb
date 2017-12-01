@@ -1,5 +1,6 @@
 <% if @message.errors.any? %>
   $('#new_message').html("<%= j render 'messages/message_form', conversation: @conversation, message: @message %>");
 <% else %>
-  $('#new_message').html("<%= j render 'messages/message_form', conversation: @conversation, message: @conversation.messages.new %>");
+  $('#message_content').val('');
+  // $('#new_message').html("<%= j render 'messages/message_form', conversation: @conversation, message: @conversation.messages.new %>");
 <% end %>

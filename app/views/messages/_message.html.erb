@@ -4,7 +4,7 @@
   </div>
   <div class="message-line flexed-left <%= 'flexed-right-reverse' if current_user == message.author %>">
     <div class="hidden author"><%= message.author.fullname %></div>
-    <div>
+    <div class="wrapper-message-avatar">
       <%= cl_image_tag dynamic_avatar(message.author), class: 'conversation-card-avatar' %>
     </div>
     <div class="message-content">

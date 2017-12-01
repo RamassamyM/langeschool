@@ -1,3 +1,4 @@
+<!-- needs notification instance -->
 <li class="dropdown-item notification-card">
   <%=link_to notification.notificable, class: notification_class_if_seen_or_not(notification) do %>
     <span class="hidden notifid" data-id="<%= notification.id %>"></span>

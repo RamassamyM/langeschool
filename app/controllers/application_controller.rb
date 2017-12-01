@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!, :load_notifications
+  before_action :authenticate_user!, :load_notifications_badge
   before_action :configure_permitted_parameters, if: :devise_controller?
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def load_notifications
+  def load_notifications_badge
     if current_user
       @notification_badge_number = current_user.unseen_notifications_number
     end

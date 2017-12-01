@@ -5,25 +5,38 @@
   <script>
     $(document).ready(function() {
       scrollbottom();
-      // removeAvatar();
+      actionCableSubscription()
+      removeAvatar();
     });
 
-    if ($('meta[name=action-cable-url]').length) {
-      App.conversation = App.cable.subscriptions.create({channel: "ConversationChannel", conversation_id: <%= @conversation.id %> }, {
-        connected: function() {},
-        // Called when the subscription is ready for use on the server
-        disconnected: function() {},
-        // Called when the subscription has been terminated by the server
-        received: function(data) {
-          if (data["message"]) {
-            var currentuser = $('#messages div.flexed-right-reverse:last div.author').text();
-            $('#messages').append(data["message"]);
-            var lastauthor = $('#messages div.flexed-right-reverse:last div.author').text()
-            if ((currentuser != "") && (currentuser != lastauthor)) {
-              $('.message-line').last().removeClass('flexed-right-reverse');
+    function actionCableSubscription() {
+      if ($('meta[name=action-cable-url]').length) {
+        App.conversation = App.cable.subscriptions.create({channel: "ConversationChannel", conversation_id: <%= @conversation.id %> }, {
+          connected: function() {},
+          // Called when the subscription is ready for use on the server
+          disconnected: function() {},
+          // Called when the subscription has been terminated by the server
+          received: function(data) {
+            if (data["message"]) {
+              var currentuser = $('#messages div.flexed-right-reverse:last div.author').text();
+              $('#messages').append(data["message"]);
+              var lastauthor = $('#messages div.flexed-right-reverse:last div.author').text()
+              if ((currentuser != "") && (currentuser != lastauthor)) {
+                $('.message-line').last().removeClass('flexed-right-reverse');
+              }
+              scrollbottom();
+              removeAvatar();
             }
-            scrollbottom();
           }
+        });
+      }
+    }
+
+    function removeAvatar() {
+      $('.message-wrapper').each(function() {
+        if ($(this).find('.author').text() === $(this).prev().find('.author').text()) {
+          $(this).prev().find('.conversation-card-avatar').addClass("hidden");
+          $(this).find('.message-date').hide();
         }
       });
     }
