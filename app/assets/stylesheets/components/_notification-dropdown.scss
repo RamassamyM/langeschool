@@ -1,20 +1,18 @@
-#notification-icon {
+.notification-icon {
   position: relative;
   margin-right: 8px;
-  #notification-badge {
+  .notification-badge {
     position: absolute;
     top: -5px;
-    right: -10px;
+    left: 8px;
     background-color: $red;
     font-size: 12px;
   }
 }
 
-.dropdown-notification {
+.dropdown-notification-wrapper {
   margin-top: 15px;
-  right: -7px;
-  width: 275px !important;
-  padding: 10px 10px 0px 10px;
+  padding: 0 0;
   box-shadow: 0 0px 4px $light-gray !important;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -31,6 +29,16 @@
     border-left: 1px solid $light-gray;
     border-top: 1px solid $light-gray;
   }
+}
+
+.dropdown-notification {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  right: -7px;
+  width: 292px !important;
+  max-height: 240px;
+  overflow-y: scroll;
+  padding: 10px 10px 0px 10px;
   li {
     p {
       margin: 0;
@@ -50,9 +58,10 @@
       margin-bottom: 10px;
       display: inline-block;
       width: 100%;
+      color: $dark-gray;
       &:hover {
-        color: $dark-gray;
-        background-color: $light-gray;
+        color: $black;
+        background-color: $lighter-blue;
       }
       .photo img {
         border-radius: 50%;
@@ -73,7 +82,10 @@
       }
     }
     .notification-unseen {
-      background: $yellow-hover;
+      background: $light-yellow;
+      &:hover {
+        background: $light-yellow-hover;
+      }
     }
   }
 }

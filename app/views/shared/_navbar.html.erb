@@ -15,7 +15,9 @@
       <%= link_to "Adhérer", subscribe_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Conseil d'Ecole", schoolcouncil_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Messagerie', conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= render 'shared/notification_dropdown' %>
+      <%= render 'shared/notification_dropdown', notification_badge_id: 'notification_badge_1',
+                  notification_dropdown_block_id: 'notification_dropdown_1',
+                  notification_badge_number: @notification_badge_number %>
       <%= link_to "Annuaire", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
@@ -51,7 +53,9 @@
   <!-- Dropdown list appearing on mobile only -->
   <% if user_signed_in? %>
     <div class="navbar-wagon-item hidden-md hidden-lg">
-      <%= render 'shared/notification_dropdown' %>
+      <%= render 'shared/notification_dropdown', notification_badge_id: 'notification_badge_2',
+                  notification_dropdown_block_id: 'notification_dropdown_2',
+                  notification_badge_number: @notification_badge_number %>
     </div>
     <div class="navbar-wagon-item hidden-md hidden-lg">
       <div class="dropdown">
