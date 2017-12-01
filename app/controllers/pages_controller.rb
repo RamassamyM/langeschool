@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :legalterms, :codeinput, :codecheck]
+  skip_before_action :authenticate_user!, only: [:home, :legalterms]
 
   def home
   end
@@ -14,9 +14,6 @@ class PagesController < ApplicationController
   end
 
   def legalterms
-  end
-
-  def codeinput
   end
 
   def subscribe_form

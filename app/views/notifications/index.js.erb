@@ -1,0 +1,4 @@
+$('#notification-dropdown-block').html('')
+<% @notifications.each do |notification|%>
+  $('#notification-dropdown-block').append("<%= j render 'shared/notification_card', notification: notification %>");
+<% end %>

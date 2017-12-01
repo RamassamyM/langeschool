@@ -75,3 +75,9 @@
 2017-11-22 13:57:45.054 CET [17613] STATEMENT:  SELECT "messages".* FROM "messages" WHERE (32)
 2017-11-22 13:57:45.056 CET [17613] ERROR:  argument of WHERE must be type boolean, not type integer at character 45
 2017-11-22 13:57:45.056 CET [17613] STATEMENT:  SELECT  "messages".* FROM "messages" WHERE (32) LIMIT $1
+2017-11-30 11:09:27.112 CET [1319] LOG:  listening on IPv6 address "::1", port 5432
+2017-11-30 11:09:27.112 CET [1319] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2017-11-30 11:09:27.113 CET [1319] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2017-11-30 11:09:27.156 CET [1320] LOG:  database system was shut down at 2017-11-30 11:01:18 CET
+2017-11-30 11:09:27.164 CET [1319] LOG:  database system is ready to accept connections
+2017-11-30 21:39:27.971 CET [1324] LOG:  using stale statistics instead of current ones because stats collector is not responding

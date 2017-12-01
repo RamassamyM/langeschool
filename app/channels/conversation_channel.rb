@@ -1,8 +1,5 @@
-require 'pry-byebug'
-
 class ConversationChannel < ApplicationCable::Channel
   def subscribed
-    # binding.pry
     conversation = Conversation.find(params[:conversation_id])
     if current_user == conversation.user1 || current_user == conversation.user2
       stream_from "conversation_channel_#{ params[:conversation_id] }"

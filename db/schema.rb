@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115143317) do
+ActiveRecord::Schema.define(version: 20171129211502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20171115143317) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["classroom_id"], name: "index_children_on_classroom_id"
+    t.index ["first_name", "last_name"], name: "index_children_on_first_name_and_last_name", unique: true
   end
 
   create_table "classrooms", force: :cascade do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(version: 20171115143317) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "index_familylinks_on_child_id"
+    t.index ["user_id", "child_id"], name: "index_familylinks_on_user_id_and_child_id", unique: true
     t.index ["user_id"], name: "index_familylinks_on_user_id"
   end
 
@@ -87,6 +89,20 @@ ActiveRecord::Schema.define(version: 20171115143317) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_messages_on_author_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.text "notification_message", default: "Nouvelle notification"
+    t.bigint "user_id"
+    t.boolean "is_seen", default: false, null: false
+    t.string "notificable_type"
+    t.bigint "notificable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "picture_url"
+    t.index ["notificable_type", "notificable_id"], name: "index_notifications_on_notificable_type_and_notificable_id"
+    t.index ["user_id", "notificable_id", "notificable_type"], name: "by_notificable_and_user", unique: true
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -134,5 +150,6 @@ ActiveRecord::Schema.define(version: 20171115143317) do
   add_foreign_key "familylinks", "children"
   add_foreign_key "familylinks", "users"
   add_foreign_key "messages", "conversations"
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
 end

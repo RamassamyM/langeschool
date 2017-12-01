@@ -7,5 +7,6 @@ class CreateChildren < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :children, %i[first_name last_name], unique: true
   end
 end

@@ -1,0 +1,8 @@
+<li class="dropdown-item notification-card">
+  <%=link_to notification.notificable, class: notification_class_if_seen_or_not(notification) do %>
+    <span class="hidden notifid" data-id="<%= notification.id %>"></span>
+    <span class="photo"><img src="<%= notification.picture_url ? notification.picture_url : "http://res.cloudinary.com/langeconnect/image/upload/v151199083/family_fb6mx3.png"%>"></span>
+    <span class="message"><%= notification.notification_message %></span>
+    <span class="time"> <%= notification.created_at.strftime("%m-%e-%y %H:%M") %></span>
+  <% end %>
+</li>

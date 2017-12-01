@@ -8,11 +8,8 @@ class ConversationsController < ApplicationController
   def show
     @message = Message.new
     @messages = @conversation.messages.for_display
-    if @conversation.user1 == current_user
-      @interlocutor = @conversation.user2
-    else
-      @interlocutor = @conversation.user1
-    end
+    @interlocutor = interlocutor(@conversation)
+    set_read_for_messages_from_interlocutor(@messages)
   end
 
   def create
@@ -35,6 +32,22 @@ class ConversationsController < ApplicationController
   end
 
   private
+
+  def set_read_for_messages_from_interlocutor(messages)
+    messages.each do |message|
+      if message.author != current_user
+        message.read
+      end
+    end
+  end
+
+  def interlocutor(conversation)
+    if conversation.user1 == current_user
+      conversation.user2
+    else
+      conversation.user1
+    end
+  end
 
   def conversation_params
     params.require(:conversation).permit(:user)

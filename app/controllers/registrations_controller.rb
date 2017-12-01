@@ -81,7 +81,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_child
-    @child = Child.new(capitalized_names_params(child_params))
+    @child = Child.find_or_initialize_by(capitalized_names_params(child_params))
   end
 
   def set_classroom_to_child
