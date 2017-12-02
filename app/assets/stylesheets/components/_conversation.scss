@@ -51,7 +51,8 @@
 
 .message-content {
   max-width: 70%;
-  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
   padding: 10px 20px;
   color: white;
   border-radius: 20px;
