@@ -189,7 +189,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    redis (4.0.1)
+    redis (3.3.5)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -269,7 +269,7 @@ DEPENDENCIES
   puma
   rails (= 5.1.4)
   rails-erd
-  redis
+  redis (~> 3.3)
   sass-rails
   simple_form
   sparkpost_rails!
