@@ -196,3 +196,10 @@
     color: $blue;
   }
 }
+
+// icon utilities ******************************
+.no-focus {
+  &:focus{
+    outline: none;
+  }
+}

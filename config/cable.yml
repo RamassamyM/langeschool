@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: langeschool_production
+  url: redis://redistogo:90f705bebf3fd92607e4b6241de3662b@jack.redistogo.com:11852/
+  # channel_prefix: langeschool_production
