@@ -1,12 +1,13 @@
 #conversation-wrapper {
   height: calc(100vh - 200px);
-  padding-bottom: 20px;
   overflow-y: scroll;
 }
 
 #messages {
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
+
   h4 {
     margin: 40px 20px;
     color: $medium-gray;
