@@ -14,11 +14,11 @@
       <%= link_to "Conseil des Parents", parentscouncil_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Adhérer", subscribe_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Conseil d'Ecole", schoolcouncil_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Annuaire", classrooms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to 'Messagerie', conversations_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= render 'shared/notification_dropdown', notification_badge_id: 'notification_badge_1',
                   notification_dropdown_block_id: 'notification_dropdown_1',
                   notification_badge_number: @notification_badge_number %>
-      <%= link_to "Annuaire", "#", class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -65,8 +65,8 @@
           <li><%= link_to 'Conseil des Parents', parentscouncil_path %></li>
           <li><%= link_to 'Adhérer', subscribe_path %></li>
           <li><%= link_to 'Conseil d\'Ecole', schoolcouncil_path %></li>
+          <li><%= link_to 'Annuaire des parents', classrooms_path %></li>
           <li><%= link_to 'Messagerie', conversations_path %></li>
-          <li><a href="#">Annuaire</a></li>
           <li>
             <%= link_to edit_user_registration_path do %>
               <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>

@@ -1,0 +1,41 @@
+<% content_for :title, "Annuaire" %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="conversation-title">
+        <h2>Annuaire des parents</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <% @classrooms.each_with_index do |classroom, index1| %>
+      <div class="conversations-block">
+        <div class="col-xs-12">
+          <a class="conversation-card distributed" data-toggle="collapse" href="#classroomlist<%= index1 %>" aria-expanded="false" aria-controls="classroomlist<%= index1 %>">
+            <h2><%= classroom.name %></h2>
+            <h3><%= classroom.teacher %></h3>
+          </a>
+          <div class="collapse" id="classroomlist<%= index1 %>">
+            <% classroom.children.each do |child| %>
+              <div class="child-block">
+                <p><%= child.first_name + " " + child.last_name %></p>
+              </div>
+              <div class="parents-block">
+                <% child.familylinks.each do |familylink| %>
+                  <%= button_to conversations_path(conversation: { user: familylink.user }, method: :post), class: "parent-line" do %>
+                    <span><%= familylink.user.fullname %></span>
+                    <span><%= familylink.parental_link %></span>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>
+

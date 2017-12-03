@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   resources :conversations, only: [:index, :show, :create] do
     resources :messages, only: [:create]
   end
+  get '/conversation/new/:id', to: 'conversations#new', as: 'new_conversation'
   resources :messages, only: [:show]
   resources :notifications, only: [:index]
+  resources :classrooms, only: [:index]
 
   mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

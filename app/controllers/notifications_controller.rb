@@ -1,5 +1,3 @@
-# require 'pry-byebug'
-
 class NotificationsController < ApplicationController
   def index
     # option: display all notifs or just group notifs (but badge number pb):
