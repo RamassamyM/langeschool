@@ -35,14 +35,14 @@ class MessagesController < ApplicationController
   end
 
   def create_notification(message)
-    notification = Notification.create(notificable: message, is_seen: false,
-                                    user: message.recipient,
-                                    picture_url: build_picture_path(message.author),
-                                    notification_message: "#{message.author.fullname} vous a écrit.")
+    Notification.create(notificable: message, is_seen: false,
+                        user: message.recipient,
+                        picture_url: build_picture_path(message.author),
+                        notification_message: "#{message.author.fullname} vous a écrit.")
   end
 
   def build_picture_path(user)
-    if user.avatar.path
+    if user.avatar
       "http://res.cloudinary.com/langeconnect/image/upload/#{user.avatar.path}"
     else
       "http://res.cloudinary.com/langeconnect/image/upload/v1511990835/family_fb6mx3.png"

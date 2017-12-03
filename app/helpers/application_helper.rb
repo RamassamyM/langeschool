@@ -34,7 +34,7 @@ module ApplicationHelper
     if user.avatar?
       ActionController::Base.helpers.cl_image_path user.avatar.path
     else
-      image_path "user.png"
+      "http://res.cloudinary.com/langeconnect/image/upload/v1511990835/family_fb6mx3.png"
     end
   end
 
