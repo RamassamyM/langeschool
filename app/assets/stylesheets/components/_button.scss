@@ -24,14 +24,16 @@
 .btn-round {
   padding: 10px 15px;
   border-radius: 50px;
-  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
   font-size: 18px;
 }
 
 .btn-round-small {
   padding: 8px 10px;
   border-radius: 50px;
-  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
   font-size: 15px;
 }
 
@@ -39,7 +41,8 @@
   margin: 10px;
   padding: 12px 18px;
   border-radius: 50px;
-  font-weight: lighter;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
   font-size: 20px;
 }
 

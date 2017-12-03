@@ -4,11 +4,13 @@ class Notification < ApplicationRecord
   validates :user, uniqueness: { scope: %i[notificable_type notificable_id] }
   validates :notification_message, presence: true
   after_create_commit { create_message_notification_to_stream_job }
-  scope :unseen, -> { where(is_seen: false).order(:created_at) }
-  scope :lastseen, -> { where(is_seen: true).order(:created_at).last(5) }
+  scope :unseen, -> { where(is_seen: false).order(created_at: :desc) }
+  scope :lastseen, -> { where(is_seen: true).order(created_at: :desc).first(5) }
+  scope :from_unseen_distinct_messages, -> { where(is_seen: false).where(notificable_type: 'Message').order(created_at: :desc).includes(:notificable).uniq { |notif| notif.notificable.conversation_id } }
+  scope :from_lastseen_distinct_messages, -> { where(is_seen: true).where(notificable_type: 'Message').order(created_at: :desc).includes(:notificable).uniq { |notif| notif.notificable.conversation_id } .first(5) }
 
   def seen
-    self.update(is_seen: true)
+    update(is_seen: true)
   end
 
   private
