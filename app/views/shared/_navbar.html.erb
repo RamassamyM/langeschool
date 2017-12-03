@@ -68,12 +68,12 @@
           <li><%= link_to 'Messagerie', conversations_path %></li>
           <li><a href="#">Annuaire</a></li>
           <li>
-            <%= link_to "#" do %>
+            <%= link_to edit_user_registration_path do %>
               <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
             <% end %>
           </li>
           <li>
-            <%= link_to "#" do %>
+            <%= link_to home_path do %>
               <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
             <% end %>
           </li>
