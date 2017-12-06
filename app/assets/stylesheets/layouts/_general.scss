@@ -12,4 +12,7 @@ a, i {
   &:active {
     text-decoration: none;
   }
+  &:focus {
+    text-decoration: none;
+  }
 }
