@@ -9,6 +9,8 @@ module ApplicationHelper
   def add_appropriate_background
     if currentpage_belongs_to?([['conversations', 'show'], ['pages', 'subscribe'], ['pages', 'parentscouncil'], ['pages', 'schoolcouncil']])
       render 'layouts/background_colored', color: 'verylight-gray'
+    elsif currentpage_belongs_to?([['classrooms', 'index']])
+      render 'layouts/background_colored', color: 'white'
     else
       render 'layouts/background_pattern'
     end
@@ -43,6 +45,22 @@ module ApplicationHelper
       'notification-box'
     else
       'notification-box notification-unseen'
+    end
+  end
+
+  def add_gender_title(gender)
+    if gender == 'female'
+      'Mme'
+    else
+      'M.'
+    end
+  end
+
+  def add_gender_color(parental_link)
+    if parental_link == "mère"
+      'mother-color'
+    else
+      'father-color'
     end
   end
 
