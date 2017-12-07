@@ -1,41 +1,67 @@
 <% content_for :title, "Annuaire" %>
 
+<%= render 'select_navbar', classrooms: @classrooms %>
+
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <div class="conversation-title">
-        <h2>Annuaire des parents</h2>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <% @classrooms.each_with_index do |classroom, index1| %>
-      <div class="conversations-block">
-        <div class="col-xs-12">
-          <a class="conversation-card distributed" data-toggle="collapse" href="#classroomlist<%= index1 %>" aria-expanded="false" aria-controls="classroomlist<%= index1 %>">
-            <h2><%= classroom.name %></h2>
-            <h3><%= classroom.teacher %></h3>
-          </a>
-          <div class="collapse" id="classroomlist<%= index1 %>">
+    <div class="col-xs-12 col-sm-offset-2 col-sm-8">
+      <div class="contacts-wrapper margined">
+        <% @classrooms.each_with_index do |classroom, index1| %>
+          <!-- hidden titles, appears only when JS desactivated -->
+          <div class="classroom-name">
+            <h5><%= classroom.name %> <small><%= add_gender_title(classroom.teacher_gender) %> <%= classroom.teacher %></small> </h5>
+          </div>
+          <!--  -->
+          <div class="classroomlist margined" data-contactblock="<%= index1 %>">
             <% classroom.children.each do |child| %>
               <div class="child-block">
-                <p><%= child.first_name + " " + child.last_name %></p>
+                <i class="fa fa-child"></i><span> <%= child.first_name + " " + child.last_name %></span>
               </div>
               <div class="parents-block">
                 <% child.familylinks.each do |familylink| %>
-                  <%= button_to conversations_path(conversation: { user: familylink.user }, method: :post), class: "parent-line" do %>
-                    <span><%= familylink.user.fullname %></span>
-                    <span><%= familylink.parental_link %></span>
+                  <%= button_to conversations_path(conversation: { user: familylink.user }, method: :post), class: "parent-line #{ add_gender_color(familylink.parental_link) }" do %>
+                    <%= cl_image_tag dynamic_avatar(familylink.user), class:"avatar"%><span><%= familylink.user.fullname %><small> (<%= familylink.parental_link %>)</small></span>
                   <% end %>
                 <% end %>
               </div>
             <% end %>
           </div>
-        </div>
+        <% end %>
       </div>
-  <% end %>
+    </div>
   </div>
 </div>
 
+<% content_for :after_js do %>
+  <script type="text/javascript">
+    $(function() {
+      hideClassroomNames();
+      initializeClassroomDisplay();
+      showClassroomContacts();
+      setmobilepicker();
+    });
+
+    function setmobilepicker() {
+      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+        $('.selectpicker').selectpicker('mobile');
+      }
+    }
+
+    function hideClassroomNames() {
+      $('.classroom-name').hide();
+    }
+
+    function initializeClassroomDisplay() {
+      $('.classroomlist').addClass('hidden');
+    }
+
+    function showClassroomContacts() {
+      $('.selectpicker').on('change', function() {
+        var index = $('.classroom-select-item:selected').data('index');
+        var selector = '[data-contactblock=' + index + ']';
+        initializeClassroomDisplay();
+        $(selector).removeClass('hidden');
+      });
+    }
+  </script>
+<% end %>

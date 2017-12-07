@@ -1,0 +1,77 @@
+.contacts-wrapper {
+
+}
+
+.classroom-name {
+  // border-radius: 8px;
+  padding: 1px 20px;
+  // background: $light-blue;
+  border: 1px solid $blue;
+  border-width: 0 0 1px 0;
+  h5 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    color: $blue;
+    // color: #6b90c1;
+    font-size: 20px;
+    small {
+      color: white;
+    }
+  }
+}
+
+.classroomlist {
+
+}
+
+.child-block {
+  margin: 10px 10px;
+  i {
+    color: $blue;
+  }
+  span {
+    color: $medium-gray;
+    font-size: 16px;
+  }
+}
+
+.parents-block {
+  margin: 5px 5px 5px 40px;
+  button {
+    border: 1px solid $light-gray;
+    border-width: 0 0 1px 0;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+    border-radius: 10px;
+    padding: 4px 16px;
+    span {
+      margin-left: 5px;
+    }
+    small {
+      font-weight: lighter;
+    }
+    &:hover, &:focus {
+      text-decoration: none;
+      span {
+        color: white!important;
+      }
+    }
+  }
+}
+
+.mother-color {
+  span {
+    color: $red!important;
+  }
+  &:hover {
+    background: $light-red;
+  }
+}
+
+.father-color {
+  span {
+    color: $blue!important;
+  }
+  &:hover {
+    background: $light-blue;
+  }
+}

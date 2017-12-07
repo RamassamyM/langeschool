@@ -1,0 +1,11 @@
+<div class="navbar-wagon title-bar distributed">
+  <h2>Annuaire des parents</h2>
+  <div class="classroom-select-wrapper">
+    <select class="selectpicker" data-style="classroom-select" data-show-subtext="true" data-width="auto" data-container="body">
+      <option  data-subtext="Bureau" class="classroom-select-item" >Conseil des Parents</option>
+      <% classrooms.each_with_index do |classroom, index1| %>
+        <option  class="classroom-select-item" data-subtext="<%= add_gender_title(classroom.teacher_gender) %> <%= classroom.teacher %>" data-index="<%= index1 %>" ><%= classroom.name %></option>
+      <% end %>
+    </select>
+  </div>
+</div>
